@@ -10,7 +10,7 @@ numbers and the official showcase disagree.
 > **raw short prompts + 1024²/20 steps**. Same prompt, same resolution, same seed: rewriting
 > GenEval's terse prompts into enhancer-style descriptions fixed **2/2** object-dropping failures.
 
-中文主报告见 [`README.md`](README.md)。
+中文主报告见 [`README.md`](README.md)。 HTML report (GitHub Pages): <https://wangsheng1991.github.io/qwen-image-2.1-bench/>
 
 ## Headline numbers
 
@@ -267,6 +267,7 @@ python3 scripts/flux_eval.py --prompts prompts-vertical.json --size 1536 --out o
 ## Files
 
 ```
+index.html                   HTML report served by GitHub Pages (headlines + six domain sheets)
 prompts.json                 public prompt text (18, with source and required rendered strings)
 prompts-vertical.json        self-authored vertical prompts (18 across 6 domains, with checkpoints)
 results/                     per-run JSON records incl. OCR scores; timings.csv is rebuilt from logs

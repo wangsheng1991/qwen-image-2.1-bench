@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Qwen-Image-2.1 实测报告：公开榜单 + 六个垂直领域</title>
+<style>
+:root{
+  color-scheme: light;
+  --brand-50:#e8f0fe; --brand-300:#8ab4f8; --brand-600:#1a73e8; --brand-700:#0b57d0;
+  --gray-50:#f9fafb; --gray-100:#f3f4f6; --gray-200:#e5e7eb; --gray-300:#d1d5db; --gray-400:#9ca3af;
+  --gray-500:#6b7280; --gray-600:#4b5563; --gray-900:#111827;
+  --bg:#fff; --surface:#fff; --border:var(--gray-200); --control-border:var(--gray-300);
+  --fg:var(--gray-900); --fg-muted:var(--gray-600); --fg-faint:var(--gray-500);
+  --accent-bg:#111827; --accent-fg:#fff;
+  --radius-control:6px; --radius-card:12px;
+  --ease:cubic-bezier(.2,.7,.3,1);
+}
+.dark{
+  color-scheme: dark;
+  --bg:#000; --surface:#0d0d0d; --border:#1f1f1f; --control-border:#303030;
+  --fg:#f3f4f6; --fg-muted:#9ca3af; --fg-faint:#6b7280;
+  --accent-bg:#f3f4f6; --accent-fg:#111827;
+  --brand-600:#8ab4f8; --brand-700:#8ab4f8;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font-size:14px;line-height:1.5;
+  font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;
+  -webkit-font-smoothing:antialiased;}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.92em;
+  background:var(--gray-100);padding:1px 5px;border-radius:4px}
+.dark code{background:#1a1a1a}
+a{color:var(--brand-700);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3{font-weight:600;letter-spacing:-.025em;margin:0}
+
+nav{position:sticky;top:0;z-index:20;height:56px;display:flex;align-items:center;gap:14px;
+  padding:0 20px;border-bottom:1px solid var(--border);
+  background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px)}
+.mark{width:26px;height:26px;border-radius:8px 8px 8px 3px;background:var(--brand-600);color:#fff;
+  display:grid;place-items:center;font-weight:600;font-size:13px}
+nav .name{font-weight:600;font-size:15px;letter-spacing:-.02em}
+nav .sp{flex:1}
+nav .links{display:none;gap:16px;font-size:13px;color:var(--fg-muted)}
+nav .links a{color:var(--fg-muted)}
+nav .links a:hover{color:var(--fg)}
+button.t{background:transparent;border:1px solid var(--control-border);border-radius:var(--radius-control);
+  color:var(--fg-muted);padding:5px 10px;font-size:12px;cursor:pointer;font-family:inherit}
+button.t:hover{background:var(--gray-100)}
+.dark button.t:hover{background:#1b1b1b}
+@media(min-width:960px){nav .links{display:flex}}
+
+main{max-width:1120px;margin:0 auto;padding:36px 20px 80px}
+.kicker{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--brand-700);font-weight:600}
+h1.hero{font-size:clamp(26px,3.4vw,34px);line-height:1.25;margin:10px 0 12px}
+.lede{color:var(--fg-muted);max-width:62ch;margin:0 0 6px}
+.lede strong{color:var(--fg)}
+.meta{font-size:12px;color:var(--fg-faint);margin-top:14px}
+
+section{margin-top:48px;scroll-margin-top:72px}
+h2{font-size:22px;margin-bottom:6px}
+h2 .n{color:var(--fg-faint);font-weight:500;margin-right:8px;font-variant-numeric:tabular-nums}
+.sub{color:var(--fg-muted);margin:0 0 18px;max-width:70ch}
+
+.grid{display:grid;gap:14px}
+@media(min-width:700px){.k4{grid-template-columns:repeat(4,1fr)}.k3{grid-template-columns:repeat(3,1fr)}.k2{grid-template-columns:repeat(2,1fr)}}
+.card{border:1px solid var(--border);border-radius:var(--radius-card);background:var(--surface);padding:18px}
+.card:hover{border-color:var(--gray-400)}
+.dark .card:hover{border-color:#3a3a3a}
+.kpi .lab{font-size:12px;color:var(--fg-faint);margin-bottom:8px}
+.kpi .big{font-size:30px;font-weight:600;letter-spacing:-.03em;font-variant-numeric:tabular-nums;line-height:1.1}
+.kpi .big small{font-size:14px;font-weight:500;color:var(--fg-muted);letter-spacing:0}
+.kpi .note{font-size:12px;color:var(--fg-muted);margin-top:8px}
+.win{color:var(--brand-700)}
+
+table{width:100%;border-collapse:collapse;font-size:13px;background:var(--surface);
+  border:1px solid var(--border);border-radius:var(--radius-card);overflow:hidden}
+th,td{text-align:left;padding:9px 12px;border-top:1px solid var(--border);vertical-align:top}
+thead th{border-top:none;background:var(--gray-50);font-weight:600;font-size:12px;color:var(--fg-muted)}
+.dark thead th{background:#121212}
+tbody tr:hover{background:var(--gray-50)}
+.dark tbody tr:hover{background:#121212}
+td.num,th.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.best{font-weight:600;color:var(--brand-700)}
+.wrap{overflow-x:auto;border-radius:var(--radius-card)}
+
+figure{margin:0 0 22px;border:1px solid var(--border);border-radius:var(--radius-card);overflow:hidden;background:var(--surface)}
+figure img{display:block;width:100%;height:auto}
+figcaption{padding:10px 14px;font-size:12px;color:var(--fg-muted);border-top:1px solid var(--border)}
+.figs{display:grid;gap:18px}
+@media(min-width:900px){.figs{grid-template-columns:repeat(2,1fr)}}
+
+.bars{display:flex;flex-direction:column;gap:10px}
+.bar{display:grid;grid-template-columns:120px 1fr 74px;align-items:center;gap:10px;font-size:12px}
+.track{height:10px;border-radius:9999px;background:var(--gray-100);overflow:hidden}
+.dark .track{background:#1a1a1a}
+.fill{height:100%;border-radius:9999px;background:var(--brand-300);transition:width 280ms var(--ease)}
+.fill.top{background:var(--brand-600)}
+.bar .v{text-align:right;font-variant-numeric:tabular-nums;color:var(--fg-muted)}
+
+ul.notes{margin:10px 0 0;padding-left:18px;color:var(--fg-muted)}
+ul.notes li{margin:6px 0}
+footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--border);font-size:12px;color:var(--fg-faint)}
+:focus-visible{outline:3px solid rgb(107 114 128 / .4);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media(max-width:640px){main{padding:24px 14px 60px}.bar{grid-template-columns:92px 1fr 62px}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="mark">Q</div>
+  <div class="name">Qwen-Image-2.1 实测报告</div>
+  <div class="sp"></div>
+  <div class="links">
+    <a href="#kpi">结论</a>
+    <a href="#vertical">垂直领域</a>
+    <a href="#ocr">文字渲染</a>
+    <a href="#pick">选型</a>
+    <a href="#public">公开榜单</a>
+    <a href="https://github.com/wangsheng1991/qwen-image-2.1-bench">仓库 ↗</a>
+  </div>
+  <button class="t" id="tg" aria-label="切换深色模式">深色</button>
+</nav>
+
+<main>
+  <div class="kicker">三方对打 · 同机同卡同题面 · seed 42</div>
+  <h1 class="hero">Qwen-Image-2.1 到底行不行：公开榜单成绩 + 六个垂直领域的实测</h1>
+  <p class="lede">
+    Qwen-Image-2.1 对上 SenseNova-U1.5 与 4 步蒸馏的 FLUX.2-klein-KV，同一台机器、同一张卡、同一份题面。
+    <strong>公开榜单那轮暴露的差距主要是口径问题</strong>（官方要的是「提示词增强 + 2K/40 步」，我们首轮全没用），
+    而<strong>垂直领域这轮暴露的是分工问题</strong>：三家没有通吃的，各有各的活。
+  </p>
+  <p class="meta">数据：公开题面 18 道 75 张图 + 自建垂直题面 18 道 108 张图 ｜ 全部出图与日志在仓库里</p>
+
+  <section id="kpi">
+    <h2><span class="n">01</span>一眼看清</h2>
+    <p class="sub">先给结论，细节在下面各节。数字都是本次抽样的实测值，不是榜单成绩。</p>
+    <div class="grid k4">
+      <div class="card kpi">
+        <div class="lab">GenEval 组合题（7 题）</div>
+        <div class="big">4<small>/7</small></div>
+        <div class="note">Qwen 只过 4 题，两个对手 7/7。原题面是给自动打分器写的极简句式，恰好是它最不利的输入</div>
+      </div>
+      <div class="card kpi">
+        <div class="lab">中文长文本 · 逐行命中</div>
+        <div class="big">18<small>/20</small></div>
+        <div class="note">Qwen 与 SenseNova 打平，FLUX 0/20。中文长文本是这两家的主场</div>
+      </div>
+      <div class="card kpi">
+        <div class="lab">垂直套件 · 文字题命中率</div>
+        <div class="big win">97.4<small>%</small></div>
+        <div class="note">SenseNova 1024² 档最高；Qwen 79.5%、FLUX 64.1%。看 UI 能力要看命中率</div>
+      </div>
+      <div class="card kpi">
+        <div class="lab">1024² 单张中位耗时</div>
+        <div class="big">1.5<small>–53.2 s</small></div>
+        <div class="note">FLUX 1.5 s / SenseNova 9.8 s / Qwen 53.2 s，差 35 倍</div>
+      </div>
+    </div>
+    <div class="grid k2" style="margin-top:14px">
+      <div class="card">
+        <div class="lab" style="font-size:12px;color:var(--fg-faint);margin-bottom:12px">垂直套件 1024² 档：文字题命中率</div>
+        <div class="bars">
+          <div class="bar"><span>SenseNova</span><span class="track"><span class="fill top" style="width:97.4%"></span></span><span class="v">97.4%</span></div>
+          <div class="bar"><span>Qwen</span><span class="track"><span class="fill" style="width:79.5%"></span></span><span class="v">79.5%</span></div>
+          <div class="bar"><span>FLUX</span><span class="track"><span class="fill" style="width:64.1%"></span></span><span class="v">64.1%</span></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="lab" style="font-size:12px;color:var(--fg-faint);margin-bottom:12px">18 道题的单张中位耗时（秒，越短越好）</div>
+        <div class="bars">
+          <div class="bar"><span>FLUX 1536²</span><span class="track"><span class="fill top" style="width:3%"></span></span><span class="v">3.8 s</span></div>
+          <div class="bar"><span>Sense 1024²</span><span class="track"><span class="fill" style="width:9%"></span></span><span class="v">9.8 s</span></div>
+          <div class="bar"><span>Sense 2048²</span><span class="track"><span class="fill" style="width:12%"></span></span><span class="v">13.2 s</span></div>
+          <div class="bar"><span>Qwen 1024²</span><span class="track"><span class="fill" style="width:50%"></span></span><span class="v">53.2 s</span></div>
+          <div class="bar"><span>Qwen 2048²</span><span class="track"><span class="fill" style="width:100%"></span></span><span class="v">113.1 s</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="vertical">
+    <h2><span class="n">02</span>垂直领域：18 道自建题，6 个领域</h2>
+    <p class="sub">题面是我们自己写的（<a href="https://github.com/wangsheng1991/qwen-image-2.1-bench/blob/main/prompts-vertical.json">prompts-vertical.json</a>），
+    每题都写明考点与判定项。三家各跑两档分辨率：统一的 1024²（可横向比）+ 各家推荐分辨率（Qwen / SenseNova 2048²、FLUX 1536），共 108 张。</p>
+
+    <div class="wrap">
+    <table>
+      <thead><tr><th>领域</th><th class="num">题数</th><th>推荐</th><th>关键发现</th></tr></thead>
+      <tbody>
+        <tr><td>建筑·外景</td><td class="num">3</td><td>三家都能用</td><td>商业级氛围图都出得来。差别在细节：<strong>SenseNova 1024 与 FLUX 1536 会在玻璃幕墙上「幻觉」出大字号招牌</strong>（<code>ARCHITECTURE</code> / <code>NEAC</code>），Qwen 没有这个毛病</td></tr>
+        <tr><td>建筑·室内</td><td class="num">3</td><td>SenseNova</td><td>空间与灯光层次最稳。Qwen 在 1024² 会丢掉氛围约束：夜景卧室题出成了白天</td></tr>
+        <tr><td>人像</td><td class="num">4</td><td>SenseNova（特写）<br>三家都行（合影、全身）</td><td>老年人特写这种高频细节题差距最大：SenseNova 的皱纹、胡须、毛细血管是照片级的，Qwen 明显更平滑。五人合影三家都给了 5 张不同的脸，手指无可见崩坏</td></tr>
+        <tr><td>App·UI</td><td class="num">4</td><td>SenseNova</td><td>只有它在 1024² 就把中文界面写对（12/12 条命中）。Qwen 在 1024² 会把整张 mockup 缩成中间一小块并留幽灵重影，2048² 才恢复（命中 5/12 → 11/12）。FLUX 中文全错</td></tr>
+        <tr><td>商品·电商</td><td class="num">2</td><td>三家都可用</td><td>白底精修与场景图都能直接交付。Qwen 在 1024² 漏了「两只瓶子」，但标签文字它最准（100%）</td></tr>
+        <tr><td>游戏·图标</td><td class="num">2</td><td>Qwen（单个图标）</td><td>单个图标三家都能出商业级；<strong>「12 个风格一致的线性图标」三家全崩</strong>——数量、线宽、风格都不统一</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="figs" style="margin-top:20px">
+      <figure><img src="images/vertical/by-domain/architecture-exterior.jpg" alt="建筑外景：3 家模型 × 2 档分辨率并排"><figcaption>建筑·外景 — 上排 1024²，下排各家推荐分辨率。注意右侧两张玻璃幕墙上的幻觉招牌</figcaption></figure>
+      <figure><img src="images/vertical/by-domain/architecture-interior.jpg" alt="室内：3 家模型 × 2 档分辨率并排"><figcaption>建筑·室内 — SenseNova 的空间与灯光层次最稳</figcaption></figure>
+      <figure><img src="images/vertical/by-domain/portrait.jpg" alt="人像：3 家模型 × 2 档分辨率并排"><figcaption>人像 — 老年人特写的高频细节差距最大</figcaption></figure>
+      <figure><img src="images/vertical/by-domain/app-ui.jpg" alt="App UI：3 家模型 × 2 档分辨率并排"><figcaption>App·UI — Qwen 1024² 缩成小块带重影，SenseNova 1024² 直接可用</figcaption></figure>
+      <figure><img src="images/vertical/by-domain/product.jpg" alt="商品：3 家模型 × 2 档分辨率并排"><figcaption>商品·电商 — 三家都能交付，看标签文字准确率</figcaption></figure>
+      <figure><img src="images/vertical/by-domain/game-icon.jpg" alt="游戏图标：3 家模型 × 2 档分辨率并排"><figcaption>游戏·图标 — 单个能出，成套图标三家全崩</figcaption></figure>
+    </div>
+  </section>
+
+  <section id="ocr">
+    <h2><span class="n">03</span>带文字题目的客观打分（OCR）</h2>
+    <p class="sub">RapidOCR 读出图里的文字，与题目要求文本逐字比对：字符准确率 = 1 − 编辑距离 / 参考长度；逐行命中 = 该行相似度 ≥ 0.85。与公开榜单那轮用的是同一把尺子。</p>
+    <div class="wrap">
+    <table>
+      <thead><tr><th>题目</th><th>档位</th><th class="num">Qwen-Image-2.1</th><th class="num">SenseNova-U1.5</th><th class="num">FLUX.2-klein-KV</th></tr></thead>
+      <tbody>
+        <tr><td><code>ui-mobile-home-zh</code> 中文健康 App 首页</td><td>1024²</td><td class="num">63.0% · 5/12</td><td class="num best">80.9% · 12/12</td><td class="num">38.0% · 2/12</td></tr>
+        <tr><td></td><td>原生</td><td class="num best">86.4% · 11/12</td><td class="num">82.6% · 12/12</td><td class="num">33.0% · 2/12</td></tr>
+        <tr><td><code>ui-login-en</code> 英文登录页</td><td>1024²</td><td class="num">85.3% · 6/6</td><td class="num best">96.8% · 6/6</td><td class="num">77.9% · 5/6</td></tr>
+        <tr><td></td><td>原生</td><td class="num">96.0% · 5/6</td><td class="num best">99.2% · 6/6</td><td class="num">83.0% · 6/6</td></tr>
+        <tr><td><code>ui-dashboard-dark</code> 深色数据看板</td><td>1024²</td><td class="num best">29.8% · 13/14</td><td class="num">13.3% · 13/14</td><td class="num">17.1% · 12/14</td></tr>
+        <tr><td></td><td>原生</td><td class="num best">34.1% · 13/14</td><td class="num">24.4% · 13/14</td><td class="num">22.2% · 11/14</td></tr>
+        <tr><td><code>ui-appstore-three</code> 三屏商店图</td><td>1024²</td><td class="num best">33.3% · 4/4</td><td class="num">22.4% · 4/4</td><td class="num">22.4% · 3/4</td></tr>
+        <tr><td></td><td>原生</td><td class="num best">23.8% · 4/4</td><td class="num">18.2% · 3/4</td><td class="num">14.4% · 3/4</td></tr>
+        <tr><td><code>product-skincare-white</code> 白底瓶身标签</td><td>1024²</td><td class="num best">100% · 3/3</td><td class="num">66.7% · 3/3</td><td class="num">72.1% · 3/3</td></tr>
+        <tr><td></td><td>原生</td><td class="num">66.7% · 3/3</td><td class="num">66.7% · 3/3</td><td class="num best">100% · 3/3</td></tr>
+        <tr><td><strong>平均</strong></td><td>1024²</td><td class="num">62.3% · 79.5%</td><td class="num">56.0% · <span class="best">97.4%</span></td><td class="num">45.5% · 64.1%</td></tr>
+        <tr><td></td><td>原生</td><td class="num">61.4% · 92.3%</td><td class="num">58.2% · <span class="best">94.9%</span></td><td class="num">50.5% · 64.1%</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <ul class="notes">
+      <li>深色看板那题<strong>字符准确率三家都低（13–34%）</strong>，因为模型会自己编出一屏表格数据；命中率（11–13/14）才反映「要求写的那些东西有没有写对」。<strong>看 UI 能力看命中率，别看字符准确率。</strong></li>
+      <li>两档分辨率的文字密度不同，跨分辨率不要直接比字符准确率。</li>
+    </ul>
+  </section>
+
+  <section id="pick">
+    <h2><span class="n">04</span>选型矩阵：这个活该用谁</h2>
+    <p class="sub">把上面两轮的结论压成一张表，直接照这个挑。</p>
+    <div class="wrap">
+    <table>
+      <thead><tr><th>场景</th><th>推荐</th><th>理由</th></tr></thead>
+      <tbody>
+        <tr><td>建筑效果图（要氛围与材质）</td><td>SenseNova</td><td>黄昏/夜景的光最准；但它会往玻璃幕墙上写幻觉招牌，出图后要过一眼</td></tr>
+        <tr><td>室内效果图</td><td>SenseNova</td><td>空间关系与灯光层次最稳</td></tr>
+        <tr><td>人像特写（要真实皮肤）</td><td>SenseNova</td><td>高频细节差距明显，Qwen 偏平滑</td></tr>
+        <tr><td>合影 / 全身</td><td>三家都行</td><td>比例正常、脸各不相同</td></tr>
+        <tr><td>App / 网页 UI 稿（含中文）</td><td>SenseNova</td><td>1024² 就能用，且比 Qwen 快 5.4 倍</td></tr>
+        <tr><td>App / 网页 UI 稿（纯英文）</td><td>Qwen @2048²，或 SenseNova</td><td>Qwen 的英文标注最干净，但 1024² 下会缩成小块留重影</td></tr>
+        <tr><td>商品白底图</td><td>三家都行</td><td>需求写清楚就够</td></tr>
+        <tr><td>游戏单图标</td><td>Qwen</td><td>造型与光效最立体</td></tr>
+        <tr><td>成套图标 / 严格一致的多元素</td><td>都不行</td><td>会退化成「一堆各画各的」，需要后处理或换专用模型</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <section id="public">
+    <h2><span class="n">05</span>公开榜单那轮：差距主要不在模型，在口径</h2>
+    <p class="sub">题面一字未改，取自 GenEval / DPG-Bench / LongText-Bench，同 seed。官方推荐管线是「提示词增强器 + 2K/40 步 + 长英文描述」，我们首轮用的是「原始短题面 + 1K/20 步」。</p>
+    <div class="wrap">
+    <table>
+      <thead><tr><th></th><th class="num">Qwen-Image-2.1</th><th class="num">SenseNova-U1.5</th><th class="num">FLUX.2-klein-KV</th></tr></thead>
+      <tbody>
+        <tr><td>形态</td><td>7B DiT（生成）+ Qwen3-VL 编码器，RGBA VAE</td><td>8B+8B MoT，8 步 + LoRA</td><td>9B 蒸馏 + INT4 KV，4 步</td></tr>
+        <tr><td>1024² 单张（中位）</td><td class="num">52.1 s（20 步）</td><td class="num">9.8 s</td><td class="num best">1.6 s</td></tr>
+        <tr><td>2048² 单张</td><td class="num">102–111 s</td><td class="num best">13 s</td><td class="num">不支持（≤1536）</td></tr>
+        <tr><td>文字渲染 · 字符准确率</td><td class="num">74.6%</td><td class="num best">86.5%</td><td class="num">40.8%</td></tr>
+        <tr><td>文字渲染 · 逐行命中</td><td class="num">25/35</td><td class="num best">26/35</td><td class="num">4/35</td></tr>
+        <tr><td>其中中文长文本逐行命中</td><td class="num best">18/20</td><td class="num best">18/20</td><td class="num">0/20</td></tr>
+        <tr><td>其中英文长文本逐行命中</td><td class="num">7/15</td><td class="num best">8/15</td><td class="num">4/15</td></tr>
+        <tr><td>GenEval 组合题（7 题）</td><td class="num">4/7</td><td class="num best">7/7</td><td class="num best">7/7</td></tr>
+        <tr><td>DPG-Bench 长描述（4 题）</td><td class="num">2 好 / 2 有瑕疵</td><td class="num best">4 好</td><td class="num best">4 好</td></tr>
+        <tr><td>原生透明 RGBA</td><td class="num best">独有</td><td class="num">✗</td><td class="num">✗</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="grid k2" style="margin-top:18px">
+      <div class="card">
+        <h3 style="font-size:16px;margin-bottom:8px">消融：只改题面，其余全不动</h3>
+        <p style="color:var(--fg-muted);margin:0">同机同卡、2048²、20 步、seed 42，把 GenEval 原题面改写成官方增强器风格的长描述：<code>two clocks</code> 从只画一个钟变成正好两个；<code>purple wine glass + black apple</code> 丢苹果变成两个都在、颜色绑定也对。<strong>这类失败是「短请求不吃」，不是「不会画」。</strong></p>
+      </div>
+      <div class="card">
+        <h3 style="font-size:16px;margin-bottom:8px">分辨率/步数修好了什么</h3>
+        <p style="color:var(--fg-muted);margin:0">结构性失败确实是配置问题：<code>a photo of a bench</code> 在 1024² 崩坏、2048² 正常。但长文本按官方配方（2048²/40 步）重跑，字符准确率 71.7% → 68.5%，<strong>没看到提升</strong>，代价却是 172 s/张 vs 52 s/张。</p>
+      </div>
+    </div>
+    <p style="margin-top:18px"><a href="https://github.com/wangsheng1991/qwen-image-2.1-bench#readme">完整报告与全部出图见仓库 README ↗</a></p>
+  </section>
+
+  <footer>
+    <p style="margin:0 0 6px">口径与局限：每题只出 1 张、单 seed，是抽样体检不是榜单成绩；组合题与长描述题由人眼判读；垂直套件 18 道题是自建的，不是公开榜单；三家没跑在完全相同的步数上（各自用服务默认）。</p>
+    <p style="margin:0">Qwen-Image-2.1 公开评测集实测 · 代码 MIT / 出图与文档 CC BY 4.0 · 评测对象为第三方模型，商标归各自所有者</p>
+  </footer>
+</main>
+
+<script>
+(function(){
+  var root=document.documentElement,btn=document.getElementById('tg');
+  function set(dark){
+    root.classList.toggle('dark',dark);
+    btn.textContent=dark?'浅色':'深色';
+    try{localStorage.setItem('qbench-theme',dark?'dark':'light')}catch(e){}
+  }
+  var saved=null;try{saved=localStorage.getItem('qbench-theme')}catch(e){}
+  set(saved?saved==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches);
+  btn.addEventListener('click',function(){set(!root.classList.contains('dark'))});
+})();
+</script>
+</body>
+</html>

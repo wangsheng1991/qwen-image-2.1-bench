@@ -15,7 +15,7 @@ the official showcase comes from **prompt format**, not resolution: rewriting Ge
 prompts into enhancer-style long descriptions fixed 2/2 object-dropping failures at the same
 resolution and seed.
 
-📄 **[English version → README.en.md](README.en.md)**
+📄 **[English version → README.en.md](README.en.md)** ｜ 🌐 **[网页版报告（结论速览 + 六领域联系表）→ https://wangsheng1991.github.io/qwen-image-2.1-bench/](https://wangsheng1991.github.io/qwen-image-2.1-bench/)**
 
 ## 结论速览
 
@@ -258,6 +258,7 @@ python3 scripts/flux_eval.py --prompts prompts-vertical.json --size 1536 --out o
 ## 目录
 
 ```
+index.html                   网页版报告（GitHub Pages，含结论速览 + 六领域联系表）
 prompts.json                 公开题面原文（18 题，含来源与要求渲染的文字）
 prompts-vertical.json        自建垂直题面（18 题 × 6 领域，每题带考点与判定项）
 results/                     逐次运行的 JSON 记录（含 OCR 打分）；timings.csv 是逐题耗时（从运行日志重建）
