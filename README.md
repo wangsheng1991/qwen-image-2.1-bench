@@ -15,6 +15,8 @@ the official showcase comes from **prompt format**, not resolution: rewriting Ge
 prompts into enhancer-style long descriptions fixed 2/2 object-dropping failures at the same
 resolution and seed.
 
+📄 **[English version → README.en.md](README.en.md)**
+
 ## 结论速览
 
 | | Qwen-Image-2.1 | SenseNova-U1.5 | FLUX.2-klein-KV |
