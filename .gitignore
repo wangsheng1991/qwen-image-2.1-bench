@@ -1,9 +1,9 @@
 # 运行产物（评测脚本的输出目录，不入库）
-out/
-out2k/
-out_fair/
-deliver/
-compare/
+/out/
+/out2k/
+/out_fair/
+/deliver/
+/compare/
 
 # Python
 __pycache__/
