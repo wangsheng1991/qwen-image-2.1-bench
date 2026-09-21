@@ -1,0 +1,9 @@
+start 01:43:45
+sense 1024 done 01:45:04
+sense 2048 done 01:46:49
+qwen 1024 done 01:57:20
+watcher start 01:57:55
+qwen-seq start 02:28:38
+qwen-seq 1024 done 02:33:31
+qwen-seq 2048 done 03:01:10
+QWEN-SEQ DONE 03:01:10

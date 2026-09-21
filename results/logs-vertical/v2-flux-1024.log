@@ -1,0 +1,22 @@
+GPU free 15.15 GiB
+call sig: (self, image: list[PIL.Image.Image] | PIL.Image.Image | None = None, prompt: str | list[str] = None, height: int | None = None, width: int | None = None, num_inference_steps: int = 4, sigmas: list[float] | None = None, num_images_per_prompt: int = 1, generator: torch._C.Generator | list[torch._C.Gen
+2026-09-21 02:29:43,824 - INFO - _init_lora_state: 112 quantized modules snapshotted, 0 unquantized params snapshotted
+Loading pipeline components...:   0%|          | 0/5 [00:00<?, ?it/s]Loading pipeline components...:  60%|██████    | 3/5 [00:00<00:00,  4.48it/s]Loading pipeline components...: 100%|██████████| 5/5 [00:00<00:00,  7.46it/s]
+Expected types for text_encoder: (<class 'transformers.models.qwen3.modeling_qwen3.Qwen3ForCausalLM'>,), got <class 'nunchaku.models.text_encoders.qwen3_text_encoder.NunchakuQwen3TextEncoderModel'>.
+loaded in 5.0s
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:00<00:00,  5.07it/s] 50%|█████     | 2/4 [00:00<00:00,  6.06it/s] 75%|███████▌  | 3/4 [00:00<00:00,  5.66it/s]100%|██████████| 4/4 [00:00<00:00,  5.48it/s]100%|██████████| 4/4 [00:00<00:00,  5.54it/s]
+[flux] 19/26 anime-keyvisual-zh         ok 3.16s 
+  0%|          | 0/4 [00:00<?, ?it/s] 50%|█████     | 2/4 [00:00<00:00, 10.05it/s]100%|██████████| 4/4 [00:00<00:00,  6.51it/s]100%|██████████| 4/4 [00:00<00:00,  6.87it/s]
+[flux] 20/26 anime-character-fullbody   ok 1.52s 
+  0%|          | 0/4 [00:00<?, ?it/s] 50%|█████     | 2/4 [00:00<00:00,  9.97it/s] 75%|███████▌  | 3/4 [00:00<00:00,  7.24it/s]100%|██████████| 4/4 [00:00<00:00,  6.32it/s]100%|██████████| 4/4 [00:00<00:00,  6.85it/s]
+[flux] 21/26 anime-duo-scene            ok 1.52s 
+  0%|          | 0/4 [00:00<?, ?it/s] 50%|█████     | 2/4 [00:00<00:00,  9.97it/s] 75%|███████▌  | 3/4 [00:00<00:00,  7.22it/s]100%|██████████| 4/4 [00:00<00:00,  6.31it/s]100%|██████████| 4/4 [00:00<00:00,  6.84it/s]
+[flux] 22/26 anime-chibi-sticker        ok 1.5s 
+  0%|          | 0/4 [00:00<?, ?it/s] 50%|█████     | 2/4 [00:00<00:00,  9.96it/s] 75%|███████▌  | 3/4 [00:00<00:00,  7.21it/s]100%|██████████| 4/4 [00:00<00:00,  6.30it/s]100%|██████████| 4/4 [00:00<00:00,  6.83it/s]
+[flux] 23/26 comic-four-panel-zh        ok 1.32s 
+  0%|          | 0/4 [00:00<?, ?it/s] 50%|█████     | 2/4 [00:00<00:00,  9.95it/s] 75%|███████▌  | 3/4 [00:00<00:00,  7.21it/s]100%|██████████| 4/4 [00:00<00:00,  6.30it/s]100%|██████████| 4/4 [00:00<00:00,  6.83it/s]
+[flux] 24/26 comic-page-action          ok 1.38s 
+  0%|          | 0/4 [00:00<?, ?it/s] 50%|█████     | 2/4 [00:00<00:00, 10.02it/s]100%|██████████| 4/4 [00:00<00:00,  6.49it/s]100%|██████████| 4/4 [00:00<00:00,  6.85it/s]
+[flux] 25/26 book-illust-spread         ok 1.38s 
+  0%|          | 0/4 [00:00<?, ?it/s] 50%|█████     | 2/4 [00:00<00:00,  9.93it/s] 75%|███████▌  | 3/4 [00:00<00:00,  7.20it/s]100%|██████████| 4/4 [00:00<00:00,  6.29it/s]100%|██████████| 4/4 [00:00<00:00,  6.82it/s]
+[flux] 26/26 ink-chinese-landscape      ok 1.57s 

@@ -109,6 +109,57 @@
   "model": "flux"
  },
  {
+  "id": "anime-keyvisual-zh",
+  "chars_want": 25,
+  "chars_ocr": 20,
+  "char_acc": 0.578,
+  "hits": 0,
+  "total": 4,
+  "hit_rate": 0.0,
+  "line_ratios": [
+   0.22,
+   0.33,
+   0.73,
+   0.0
+  ],
+  "ocr_head": "盲网回 萧二易 7月12白当每周元20:00",
+  "size": "1024",
+  "model": "flux"
+ },
+ {
+  "id": "comic-four-panel-zh",
+  "chars_want": 15,
+  "chars_ocr": 20,
+  "char_acc": 0.229,
+  "hits": 0,
+  "total": 4,
+  "hit_rate": 0.0,
+  "line_ratios": [
+   0.44,
+   0.0,
+   0.4,
+   0.25
+  ],
+  "ocr_head": "今禾下？ 和担鲍? 和艳元 和！ 你蜴！ 你 抒子！",
+  "size": "1024",
+  "model": "flux"
+ },
+ {
+  "id": "book-illust-spread",
+  "chars_want": 10,
+  "chars_ocr": 9,
+  "char_acc": 0.211,
+  "hits": 0,
+  "total": 1,
+  "hit_rate": 0.0,
+  "line_ratios": [
+   0.21
+  ],
+  "ocr_head": "小溫的力之 的兰星易",
+  "size": "1024",
+  "model": "flux"
+ },
+ {
   "id": "ui-mobile-home-zh",
   "chars_want": 38,
   "chars_ocr": 35,
@@ -214,6 +265,57 @@
    1.0
   ],
   "ocr_head": "AURA Hydrating Serum  30 ml",
+  "size": "1024",
+  "model": "qwen"
+ },
+ {
+  "id": "anime-keyvisual-zh",
+  "chars_want": 25,
+  "chars_ocr": 25,
+  "char_acc": 1.0,
+  "hits": 4,
+  "total": 4,
+  "hit_rate": 1.0,
+  "line_ratios": [
+   1.0,
+   1.0,
+   1.0,
+   1.0
+  ],
+  "ocr_head": "夏日回响 第二季 7月12日起每周五20:00 星辰动画",
+  "size": "1024",
+  "model": "qwen"
+ },
+ {
+  "id": "comic-four-panel-zh",
+  "chars_want": 15,
+  "chars_ocr": 31,
+  "char_acc": 0.348,
+  "hits": 4,
+  "total": 4,
+  "hit_rate": 1.0,
+  "line_ratios": [
+   1.0,
+   1.0,
+   1.0,
+   1.0
+  ],
+  "ocr_head": "那也要去 今天下雨 你迟到了 到了！ 到 10 崇王水 了 你了1 逝过雨 今天 !",
+  "size": "1024",
+  "model": "qwen"
+ },
+ {
+  "id": "book-illust-spread",
+  "chars_want": 10,
+  "chars_ocr": 10,
+  "char_acc": 1.0,
+  "hits": 1,
+  "total": 1,
+  "hit_rate": 1.0,
+  "line_ratios": [
+   1.0
+  ],
+  "ocr_head": "小狐狸找到了一颗星星",
   "size": "1024",
   "model": "qwen"
  },
@@ -327,6 +429,57 @@
   "model": "sense"
  },
  {
+  "id": "anime-keyvisual-zh",
+  "chars_want": 25,
+  "chars_ocr": 25,
+  "char_acc": 1.0,
+  "hits": 4,
+  "total": 4,
+  "hit_rate": 1.0,
+  "line_ratios": [
+   1.0,
+   1.0,
+   1.0,
+   1.0
+  ],
+  "ocr_head": "夏日回响 第二季 7月12日起每周五20:00 星辰动画",
+  "size": "1024",
+  "model": "sense"
+ },
+ {
+  "id": "comic-four-panel-zh",
+  "chars_want": 15,
+  "chars_ocr": 15,
+  "char_acc": 1.0,
+  "hits": 4,
+  "total": 4,
+  "hit_rate": 1.0,
+  "line_ratios": [
+   1.0,
+   1.0,
+   1.0,
+   1.0
+  ],
+  "ocr_head": "今天下雨 那也要去 到了! 你迟到了",
+  "size": "1024",
+  "model": "sense"
+ },
+ {
+  "id": "book-illust-spread",
+  "chars_want": 10,
+  "chars_ocr": 10,
+  "char_acc": 1.0,
+  "hits": 1,
+  "total": 1,
+  "hit_rate": 1.0,
+  "line_ratios": [
+   1.0
+  ],
+  "ocr_head": "小狐狸找到了一颗星星",
+  "size": "1024",
+  "model": "sense"
+ },
+ {
   "id": "ui-mobile-home-zh",
   "chars_want": 38,
   "chars_ocr": 71,
@@ -432,6 +585,57 @@
    1.0
   ],
   "ocr_head": "AURA Hydrating Serum 30 ml",
+  "size": "1536",
+  "model": "flux"
+ },
+ {
+  "id": "anime-keyvisual-zh",
+  "chars_want": 25,
+  "chars_ocr": 18,
+  "char_acc": 0.558,
+  "hits": 0,
+  "total": 4,
+  "hit_rate": 0.0,
+  "line_ratios": [
+   0.22,
+   0.33,
+   0.71,
+   0.0
+  ],
+  "ocr_head": "方回 直二 7月12白良每个又20:00",
+  "size": "1536",
+  "model": "flux"
+ },
+ {
+  "id": "comic-four-panel-zh",
+  "chars_want": 15,
+  "chars_ocr": 26,
+  "char_acc": 0.146,
+  "hits": 0,
+  "total": 4,
+  "hit_rate": 0.0,
+  "line_ratios": [
+   0.44,
+   0.0,
+   0.0,
+   0.22
+  ],
+  "ocr_head": "今今肉雨？ 和能明祭次 方下? 你学李兆 现地可? 你 舒符术」",
+  "size": "1536",
+  "model": "flux"
+ },
+ {
+  "id": "book-illust-spread",
+  "chars_want": 10,
+  "chars_ocr": 5,
+  "char_acc": 0.133,
+  "hits": 0,
+  "total": 1,
+  "hit_rate": 0.0,
+  "line_ratios": [
+   0.13
+  ],
+  "ocr_head": "小，幼心肉",
   "size": "1536",
   "model": "flux"
  },
@@ -545,6 +749,57 @@
   "model": "qwen"
  },
  {
+  "id": "anime-keyvisual-zh",
+  "chars_want": 25,
+  "chars_ocr": 25,
+  "char_acc": 1.0,
+  "hits": 4,
+  "total": 4,
+  "hit_rate": 1.0,
+  "line_ratios": [
+   1.0,
+   1.0,
+   1.0,
+   1.0
+  ],
+  "ocr_head": "夏日回响 第二季 7月12日起每周五20:00 星辰动画",
+  "size": "2048",
+  "model": "qwen"
+ },
+ {
+  "id": "comic-four-panel-zh",
+  "chars_want": 15,
+  "chars_ocr": 33,
+  "char_acc": 0.333,
+  "hits": 4,
+  "total": 4,
+  "hit_rate": 1.0,
+  "line_ratios": [
+   1.0,
+   1.0,
+   1.0,
+   1.0
+  ],
+  "ocr_head": "2 那也要去 你迟到了 今天下雨 4 i1 2 你迟到了 到了！ 10 到了1 9 8 5 6",
+  "size": "2048",
+  "model": "qwen"
+ },
+ {
+  "id": "book-illust-spread",
+  "chars_want": 10,
+  "chars_ocr": 10,
+  "char_acc": 1.0,
+  "hits": 1,
+  "total": 1,
+  "hit_rate": 1.0,
+  "line_ratios": [
+   1.0
+  ],
+  "ocr_head": "小狐狸找到了一颗星星",
+  "size": "2048",
+  "model": "qwen"
+ },
+ {
   "id": "ui-mobile-home-zh",
   "chars_want": 38,
   "chars_ocr": 54,
@@ -650,6 +905,57 @@
    1.0
   ],
   "ocr_head": "AURA AURA Hydrating Serum Hydrating Serum 30 ml  30 ml ",
+  "size": "2048",
+  "model": "sense"
+ },
+ {
+  "id": "anime-keyvisual-zh",
+  "chars_want": 25,
+  "chars_ocr": 26,
+  "char_acc": 0.98,
+  "hits": 4,
+  "total": 4,
+  "hit_rate": 1.0,
+  "line_ratios": [
+   1.0,
+   1.0,
+   1.0,
+   1.0
+  ],
+  "ocr_head": "「夏日回响 第二季 7月12日起每周五20:00 星辰动画",
+  "size": "2048",
+  "model": "sense"
+ },
+ {
+  "id": "comic-four-panel-zh",
+  "chars_want": 15,
+  "chars_ocr": 22,
+  "char_acc": 0.811,
+  "hits": 4,
+  "total": 4,
+  "hit_rate": 1.0,
+  "line_ratios": [
+   1.0,
+   1.0,
+   1.0,
+   1.0
+  ],
+  "ocr_head": "2 今天下雨 今天下雨 那也要去 到了！ 学校 你迟到了",
+  "size": "2048",
+  "model": "sense"
+ },
+ {
+  "id": "book-illust-spread",
+  "chars_want": 10,
+  "chars_ocr": 12,
+  "char_acc": 0.909,
+  "hits": 1,
+  "total": 1,
+  "hit_rate": 1.0,
+  "line_ratios": [
+   1.0
+  ],
+  "ocr_head": "「小狐狸找到了一颗星星」",
   "size": "2048",
   "model": "sense"
  }

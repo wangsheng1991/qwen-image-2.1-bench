@@ -20,8 +20,12 @@ SENSE_URL = os.environ.get("SENSE_URL", "http://127.0.0.1:8400").rstrip("/")
 OUT = ROOT / "deliver-vertical"
 TILE = 300
 LABEL_W = 330
-FONT = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 20)
-FONT_S = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 16)
+# 领域名是中文，标题字体要带 CJK 字形，否则标签会渲染成方块：
+#   PACK_FONT=/path/to/NotoSansCJK-Bold.ttc PACK_FONT_INDEX=0 python3 pack_vertical.py
+FONT_PATH = os.environ.get("PACK_FONT", "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf")
+FONT_INDEX = int(os.environ.get("PACK_FONT_INDEX", "0"))
+FONT_S = ImageFont.truetype(FONT_PATH, 16, index=FONT_INDEX)
+FONT = ImageFont.truetype(FONT_PATH, 20, index=FONT_INDEX)
 
 ARMS = [("1024", "qwen"), ("1024", "sense"), ("1024", "flux"),
         ("2048", "qwen"), ("2048", "sense"), ("1536", "flux")]
@@ -94,7 +98,8 @@ def main() -> None:
                 im = load(p, TILE)
                 cv.paste(im, (x + (TILE - im.width) // 2, y + (TILE - im.height) // 2))
             y += TILE + 34
-        name = dom.replace("·", "-").replace(" ", "")
+        name = next((p.get("domain_en") for p in prompts if p["domain"] == dom), dom)
+        (OUT / "by-domain").mkdir(parents=True, exist_ok=True)
         cv.save(OUT / "by-domain" / f"{name}.jpg", "JPEG", quality=90)
         print("sheet", name, cv.size)
 

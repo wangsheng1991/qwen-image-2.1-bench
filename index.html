@@ -131,7 +131,7 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--border);font-
     <strong>公开榜单那轮暴露的差距主要是口径问题</strong>（官方要的是「提示词增强 + 2K/40 步」，我们首轮全没用），
     而<strong>垂直领域这轮暴露的是分工问题</strong>：三家没有通吃的，各有各的活。
   </p>
-  <p class="meta">数据：公开题面 18 道 75 张图 + 自建垂直题面 18 道 108 张图 ｜ 全部出图与日志在仓库里</p>
+  <p class="meta">数据：公开题面 18 道 75 张图 + 自建垂直题面 26 道 156 张图（9 个领域）｜ 全部出图与日志在仓库里</p>
 
   <section id="kpi">
     <h2><span class="n">01</span>一眼看清</h2>
@@ -149,8 +149,8 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--border);font-
       </div>
       <div class="card kpi">
         <div class="lab">垂直套件 · 文字题命中率</div>
-        <div class="big win">97.4<small>%</small></div>
-        <div class="note">SenseNova 1024² 档最高；Qwen 79.5%、FLUX 64.1%。看 UI 能力要看命中率</div>
+        <div class="big win">97.9<small>%</small></div>
+        <div class="note">SenseNova 1024² 档最高；Qwen 83.3%、FLUX 52.1%（8 道文字题）。看 UI 能力要看命中率</div>
       </div>
       <div class="card kpi">
         <div class="lab">1024² 单张中位耗时</div>
@@ -160,11 +160,11 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--border);font-
     </div>
     <div class="grid k2" style="margin-top:14px">
       <div class="card">
-        <div class="lab" style="font-size:12px;color:var(--fg-faint);margin-bottom:12px">垂直套件 1024² 档：文字题命中率</div>
+        <div class="lab" style="font-size:12px;color:var(--fg-faint);margin-bottom:12px">垂直套件 1024² 档：文字题命中率（8 道）</div>
         <div class="bars">
-          <div class="bar"><span>SenseNova</span><span class="track"><span class="fill top" style="width:97.4%"></span></span><span class="v">97.4%</span></div>
-          <div class="bar"><span>Qwen</span><span class="track"><span class="fill" style="width:79.5%"></span></span><span class="v">79.5%</span></div>
-          <div class="bar"><span>FLUX</span><span class="track"><span class="fill" style="width:64.1%"></span></span><span class="v">64.1%</span></div>
+          <div class="bar"><span>SenseNova</span><span class="track"><span class="fill top" style="width:97.9%"></span></span><span class="v">97.9%</span></div>
+          <div class="bar"><span>Qwen</span><span class="track"><span class="fill" style="width:83.3%"></span></span><span class="v">83.3%</span></div>
+          <div class="bar"><span>FLUX</span><span class="track"><span class="fill" style="width:52.1%"></span></span><span class="v">52.1%</span></div>
         </div>
       </div>
       <div class="card">
@@ -181,9 +181,9 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--border);font-
   </section>
 
   <section id="vertical">
-    <h2><span class="n">02</span>垂直领域：18 道自建题，6 个领域</h2>
+    <h2><span class="n">02</span>垂直领域：26 道自建题，9 个领域</h2>
     <p class="sub">题面是我们自己写的（<a href="https://github.com/wangsheng1991/qwen-image-2.1-bench/blob/main/prompts-vertical.json">prompts-vertical.json</a>），
-    每题都写明考点与判定项。三家各跑两档分辨率：统一的 1024²（可横向比）+ 各家推荐分辨率（Qwen / SenseNova 2048²、FLUX 1536），共 108 张。</p>
+    每题都写明考点与判定项。三家各跑两档分辨率：统一的 1024²（可横向比）+ 各家推荐分辨率（Qwen / SenseNova 2048²、FLUX 1536），共 156 张。</p>
 
     <div class="wrap">
     <table>
@@ -195,6 +195,9 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--border);font-
         <tr><td>App·UI</td><td class="num">4</td><td>SenseNova</td><td>只有它在 1024² 就把中文界面写对（12/12 条命中）。Qwen 在 1024² 会把整张 mockup 缩成中间一小块并留幽灵重影，2048² 才恢复（命中 5/12 → 11/12）。FLUX 中文全错</td></tr>
         <tr><td>商品·电商</td><td class="num">2</td><td>三家都可用</td><td>白底精修与场景图都能直接交付。Qwen 在 1024² 漏了「两只瓶子」，但标签文字它最准（100%）</td></tr>
         <tr><td>游戏·图标</td><td class="num">2</td><td>Qwen（单个图标）</td><td>单个图标三家都能出商业级；<strong>「12 个风格一致的线性图标」三家全崩</strong>——数量、线宽、风格都不统一</td></tr>
+        <tr><td>动漫·二次元</td><td class="num">4</td><td>Qwen / SenseNova</td><td>番剧海报：两家的中文主标题、副标题、播出信息、制作署名<strong>全写对</strong>（OCR 4/4、字符 100%，Qwen 两档满分），FLUX 整行乱码（0/4）。角色立绘与双人雨夜场景三家都能出；<strong>Q版六格表情包三家都过了</strong>，与「12 个线性图标」那题形成对比</td></tr>
+        <tr><td>漫画·分镜</td><td class="num">2</td><td>SenseNova</td><td>四格漫画：只有 SenseNova 1024² 把四句中文台词<strong>放进对应画格</strong>（100% · 4/4）；Qwen 四句都写出来了但<strong>配对搞乱</strong>、还夹乱码（字符准确率 34.8%）；FLUX 全乱。黑白动作分镜页三家都能出「5 格 + 速度线 + 眼睛特写」</td></tr>
+        <tr><td>插画·绘本</td><td class="num">2</td><td>SenseNova（水墨）/ 两家都行（绘本）</td><td>绘本跨页：Qwen 两档都是 100%，SenseNova 也对，FLUX 乱码。国风水墨：SenseNova 的浓淡层次最好；<strong>Qwen 两档都「太淡」</strong>——留白过头，山体几乎看不见</td></tr>
       </tbody>
     </table>
     </div>
@@ -206,6 +209,9 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--border);font-
       <figure><img src="images/vertical/by-domain/app-ui.jpg" alt="App UI：3 家模型 × 2 档分辨率并排"><figcaption>App·UI — Qwen 1024² 缩成小块带重影，SenseNova 1024² 直接可用</figcaption></figure>
       <figure><img src="images/vertical/by-domain/product.jpg" alt="商品：3 家模型 × 2 档分辨率并排"><figcaption>商品·电商 — 三家都能交付，看标签文字准确率</figcaption></figure>
       <figure><img src="images/vertical/by-domain/game-icon.jpg" alt="游戏图标：3 家模型 × 2 档分辨率并排"><figcaption>游戏·图标 — 单个能出，成套图标三家全崩</figcaption></figure>
+      <figure><img src="images/vertical/by-domain/anime.jpg" alt="动漫：3 家模型 × 2 档分辨率并排"><figcaption>动漫·二次元 — 中文海报 Qwen / SenseNova 全对，FLUX 乱码；Q版六格三家都过</figcaption></figure>
+      <figure><img src="images/vertical/by-domain/comic.jpg" alt="漫画分镜：3 家模型 × 2 档分辨率并排"><figcaption>漫画·分镜 — 只有 SenseNova 把台词放进对应画格</figcaption></figure>
+      <figure><img src="images/vertical/by-domain/illustration.jpg" alt="插画绘本：3 家模型 × 2 档分辨率并排"><figcaption>插画·绘本 — 绘本文字都对；水墨 Qwen 太淡</figcaption></figure>
     </div>
   </section>
 
@@ -226,13 +232,20 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--border);font-
         <tr><td></td><td>原生</td><td class="num best">23.8% · 4/4</td><td class="num">18.2% · 3/4</td><td class="num">14.4% · 3/4</td></tr>
         <tr><td><code>product-skincare-white</code> 白底瓶身标签</td><td>1024²</td><td class="num best">100% · 3/3</td><td class="num">66.7% · 3/3</td><td class="num">72.1% · 3/3</td></tr>
         <tr><td></td><td>原生</td><td class="num">66.7% · 3/3</td><td class="num">66.7% · 3/3</td><td class="num best">100% · 3/3</td></tr>
-        <tr><td><strong>平均</strong></td><td>1024²</td><td class="num">62.3% · 79.5%</td><td class="num">56.0% · <span class="best">97.4%</span></td><td class="num">45.5% · 64.1%</td></tr>
-        <tr><td></td><td>原生</td><td class="num">61.4% · 92.3%</td><td class="num">58.2% · <span class="best">94.9%</span></td><td class="num">50.5% · 64.1%</td></tr>
+        <tr><td><code>anime-keyvisual-zh</code> 番剧海报（标题/副标题/播出/制作）</td><td>1024²</td><td class="num best">100% · 4/4</td><td class="num best">100% · 4/4</td><td class="num">57.8% · 0/4</td></tr>
+        <tr><td></td><td>原生</td><td class="num best">100% · 4/4</td><td class="num">98.0% · 4/4</td><td class="num">55.8% · 0/4</td></tr>
+        <tr><td><code>comic-four-panel-zh</code> 四格漫画的中文对白</td><td>1024²</td><td class="num">34.8% · 4/4</td><td class="num best">100% · 4/4</td><td class="num">22.9% · 0/4</td></tr>
+        <tr><td></td><td>原生</td><td class="num">33.3% · 4/4</td><td class="num best">81.1% · 4/4</td><td class="num">14.6% · 0/4</td></tr>
+        <tr><td><code>book-illust-spread</code> 绘本跨页的一行正文</td><td>1024²</td><td class="num best">100% · 1/1</td><td class="num best">100% · 1/1</td><td class="num">21.1% · 0/1</td></tr>
+        <tr><td></td><td>原生</td><td class="num best">100% · 1/1</td><td class="num">90.9% · 1/1</td><td class="num">13.3% · 0/1</td></tr>
+        <tr><td><strong>平均（8 道文字题）</strong></td><td>1024²</td><td class="num">68.3% · 83.3%</td><td class="num">72.5% · <span class="best">97.9%</span></td><td class="num">41.2% · 52.1%</td></tr>
+        <tr><td></td><td>原生</td><td class="num">67.5% · 93.8%</td><td class="num">70.1% · <span class="best">95.8%</span></td><td class="num">42.0% · 52.1%</td></tr>
       </tbody>
     </table>
     </div>
     <ul class="notes">
       <li>深色看板那题<strong>字符准确率三家都低（13–34%）</strong>，因为模型会自己编出一屏表格数据；命中率（11–13/14）才反映「要求写的那些东西有没有写对」。<strong>看 UI 能力看命中率，别看字符准确率。</strong></li>
+      <li>四格漫画那题正好反过来示范了这一条：<strong>Qwen 命中 4/4、字符准确率却只有 34.8%</strong>——四句台词都写出来了，但配到了错的画格、还夹着乱码字。字符准确率低说明「字错了」，命中率高说明「话说了但位置不对」，这题要两个指标一起看。</li>
       <li>两档分辨率的文字密度不同，跨分辨率不要直接比字符准确率。</li>
     </ul>
   </section>
@@ -253,6 +266,12 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--border);font-
         <tr><td>商品白底图</td><td>三家都行</td><td>需求写清楚就够</td></tr>
         <tr><td>游戏单图标</td><td>Qwen</td><td>造型与光效最立体</td></tr>
         <tr><td>成套图标 / 严格一致的多元素</td><td>都不行</td><td>会退化成「一堆各画各的」，需要后处理或换专用模型</td></tr>
+        <tr><td>番剧 / 游戏宣传海报（含中文大标题）</td><td>Qwen 或 SenseNova</td><td>两家的中文标题层级都到位（OCR 4/4）；FLUX 中文整行乱码</td></tr>
+        <tr><td>Q版表情包 / 贴纸组（6 格以内）</td><td>SenseNova</td><td>三家都能出，它的格子、白描边、表情差异最规整</td></tr>
+        <tr><td>四格漫画（带中文对白）</td><td>SenseNova</td><td>只有它把台词放进对应画格；Qwen 会串格，FLUX 全乱</td></tr>
+        <tr><td>黑白动作分镜页（无对白）</td><td>三家都能出</td><td>区别在分格是否规整：SenseNova &gt; FLUX &gt; Qwen</td></tr>
+        <tr><td>儿童绘本跨页（带一行正文）</td><td>Qwen 或 SenseNova</td><td>文字都对；Qwen 还会给出「翻开的书页」立体感</td></tr>
+        <tr><td>国风水墨山水</td><td>SenseNova</td><td>浓淡层次与点景最稳；Qwen 两档都太淡</td></tr>
       </tbody>
     </table>
     </div>
@@ -293,6 +312,7 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--border);font-
 
   <footer>
     <p style="margin:0 0 6px">口径与局限：每题只出 1 张、单 seed，是抽样体检不是榜单成绩；组合题与长描述题由人眼判读；垂直套件 18 道题是自建的，不是公开榜单；三家没跑在完全相同的步数上（各自用服务默认）。</p>
+    <p style="margin:0 0 6px">新增的 8 道题里 Qwen 那臂是在借来的卡上用更省显存的 <code>sequential</code> offload 档跑完的（出图正常，耗时不可比，故未进耗时对比）。</p>
     <p style="margin:0">Qwen-Image-2.1 公开评测集实测 · 代码 MIT / 出图与文档 CC BY 4.0 · 评测对象为第三方模型，商标归各自所有者</p>
   </footer>
 </main>

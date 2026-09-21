@@ -1,0 +1,9 @@
+[qwen] 19/26 anime-keyvisual-zh         ok 58.4s
+[qwen] 20/26 anime-character-fullbody   ok 55.7s
+[qwen] 21/26 anime-duo-scene            ok 54.1s
+[qwen] 22/26 anime-chibi-sticker        ok 53.3s
+[qwen] 23/26 comic-four-panel-zh        ok 52.9s
+[qwen] 24/26 comic-page-action          FAIL 180.0s {"error": "RuntimeError: vram_busy: free 15.5 GiB < 19.0 GiB after 180s"}
+[qwen] 25/26 book-illust-spread         FAIL 180.0s {"error": "RuntimeError: vram_busy: free 15.5 GiB < 19.0 GiB after 180s"}
+[qwen] 26/26 ink-chinese-landscape      FAIL 180.0s {"error": "RuntimeError: vram_busy: free 15.5 GiB < 19.0 GiB after 180s"}
+done 8

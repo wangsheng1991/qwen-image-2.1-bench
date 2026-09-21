@@ -125,13 +125,13 @@ though: 172 s/image at 2048²/40 steps vs 52 s/image at 1024²/20 steps.
 | **Sampling and scoring**: 1 image/prompt, single seed, n=4–7; human yes/no instead of Mask2Former | medium | official GenEval is 553 prompts × 4 images with an object detector |
 | **Resolution / steps** | large for structural failures, small for text | bench: broken at 1K, fine at 2K; long-text scores flat |
 
-## Vertical domains (architecture / portrait / app UI / product / game icons)
+## Vertical domains (architecture / interior / portrait / app UI / product / game icons / anime / comic / illustration)
 
 Leaderboards measure general capability, which does not answer *"which model should take this job"*.
-So we wrote a second set of **18 vertical prompts** — **self-authored, not a public benchmark**, but
-each one carries its own checkpoints ([`prompts-vertical.json`](prompts-vertical.json)). All three
-models ran at two sizes: a uniform 1024² (comparable across models) and each model's recommended size
-(Qwen / SenseNova 2048², FLUX 1536).
+So we wrote a second set of **26 vertical prompts** — **self-authored, not a public benchmark**, but
+each one carries its own checkpoints ([`prompts-vertical.json`](prompts-vertical.json)), across 9 domains.
+All three models ran at two sizes: a uniform 1024² (comparable across models) and each model's
+recommended size (Qwen / SenseNova 2048², FLUX 1536) — **156 images** in total.
 
 ### Verdict by domain
 
@@ -143,6 +143,9 @@ models ran at two sizes: a uniform 1024² (comparable across models) and each mo
 | App · UI | 4 | **SenseNova** | The only one that renders a correct Chinese UI already at 1024² (12/12 lines). At 1024² Qwen **shrinks the whole mockup into a small block in the middle with ghosting**, only recovering at 2048² (line hits 5/12 → 11/12, char accuracy 63.0% → 86.4%). FLUX gets all Chinese wrong |
 | Product · e-commerce | 2 | any of the three | White-background retouch and lifestyle shots are both shippable. Qwen missed the "two bottles" at 1024², but its label text is the most accurate (100%) |
 | Game · icons | 2 | Qwen (single icon) | A single icon is commercial-grade from all three; **the "12 style-consistent line icons" prompt breaks all three** — count, stroke weight and style all drift |
+| Anime · 2D | 4 | **Qwen / SenseNova** (FLUX out) | On the TV-anime poster both Qwen and SenseNova write the Chinese main title, subtitle, broadcast slot and studio credit **correctly** (OCR 4/4, 100% chars; Qwen perfect at both sizes); FLUX garbles the whole block (0/4). Character sheets and the two-person rainy-street scene come out fine from all three; **the six-cell chibi sticker sheet passes on all three** (six cells, distinct expressions) — unlike the 12-icon prompt. The differences are cosmetic: SenseNova's tidy 3×2 grid with white die-cut outlines, Qwen's loose spacing, FLUX's drifting character design |
+| Comic · storyboard | 2 | **SenseNova** | Four-panel comic: **only SenseNova at 1024² puts each of the four Chinese lines into the correct panel** (100% · 4/4); Qwen writes all four lines (4/4 hits) but **pairs them with the wrong panels** and mixes in garbled characters, so char accuracy is only 34.8%; FLUX garbles everything (0/4). On the black-and-white action page all three produce "5 panels + speed lines + eye close-up"; SenseNova's gutters are the cleanest, Qwen's panels skew and leave white gaps |
+| Illustration · picture book | 2 | **SenseNova** (ink) / either (picture book) | Picture-book spread: Qwen scores 100% at both sizes (and adds a convincing open-book perspective), SenseNova is correct too, FLUX garbles it. Chinese ink-wash landscape: SenseNova has the best tonal range and detail; **Qwen comes out too faint at both sizes** — the negative space swallows the mountains |
 
 ### Objective scoring of the text-bearing prompts (OCR)
 
@@ -158,22 +161,41 @@ models ran at two sizes: a uniform 1024² (comparable across models) and each mo
 | | native | 23.8% · 4/4 | 18.2% · 3/4 | 14.4% · 3/4 |
 | `product-skincare-white` (label on a white bottle) | 1024² | **100% · 3/3** | 66.7% · 3/3 | 72.1% · 3/3 |
 | | native | 66.7% · 3/3 | 66.7% · 3/3 | **100% · 3/3** |
-| **mean** | 1024² | 62.3% · 79.5% | 56.0% · **97.4%** | 45.5% · 64.1% |
-| | native | 61.4% · 92.3% | 58.2% · **94.9%** | 50.5% · 64.1% |
+| `anime-keyvisual-zh` (anime poster: title / subtitle / slot / studio) | 1024² | **100% · 4/4** | **100% · 4/4** | 57.8% · 0/4 |
+| | native | **100% · 4/4** | 98.0% · 4/4 | 55.8% · 0/4 |
+| `comic-four-panel-zh` (Chinese dialogue in four panels) | 1024² | 34.8% · 4/4 | **100% · 4/4** | 22.9% · 0/4 |
+| | native | 33.3% · 4/4 | 81.1% · 4/4 | 14.6% · 0/4 |
+| `book-illust-spread` (one line of body text on a picture-book spread) | 1024² | **100% · 1/1** | **100% · 1/1** | 21.1% · 0/1 |
+| | native | **100% · 1/1** | 90.9% · 1/1 | 13.3% · 0/1 |
+| **mean (8 text prompts)** | 1024² | 68.3% · 83.3% | 72.5% · **97.9%** | 41.2% · 52.1% |
+| | native | 67.5% · 93.8% | 70.1% · **95.8%** | 42.0% · 52.1% |
 
-Same ruler as the public-benchmark round (identical RapidOCR scoring script), with two caveats:
+Same ruler as the public-benchmark round (identical RapidOCR scoring script), with three caveats:
 
 - On the dark dashboard **char accuracy is low for all three (13–34%)**, because the models invent a
   screenful of table data; the **line hit rate (11–13/14) is what reflects "did it write the strings
   we asked for"**. For UI capability, read hit rate, not char accuracy.
+- The four-panel comic shows the opposite case and is worth reading together: **Qwen hits 4/4 lines
+  while char accuracy is only 34.8%** — it wrote all four lines but attached them to the wrong panels
+  and mixed in garbled characters. Low char accuracy means "the characters are wrong", high hit rate
+  means "the sentence exists but in the wrong place"; this prompt needs both metrics.
 - Text density differs between the two sizes, so do not compare char accuracy across sizes directly.
 
-### Latency (median of 18 prompts)
+### Latency (median of the first 18 prompts)
 
 | | Qwen-Image-2.1 | SenseNova-U1.5 | FLUX.2-klein-KV |
 |---|---|---|---|
 | 1024² median | 53.2 s | 9.8 s | **1.5 s** |
 | native median | 113.1 s (2048²) | 13.2 s (2048²) | **3.8 s** (1536²) |
+
+**The 8 prompts added later are not in this table — do not compare them.** While they ran, card 3 was
+occupied by a render-farm job, so the Qwen arm moved to a borrowed card and used the more
+memory-frugal `sequential` offload mode for all 2048² images and three of the 1024² ones: **97 s at
+1024² / 208 s at 2048²**, roughly 2× the `model` mode of round 1. Offload mode only changes when
+weights are staged in and out, not the sampling math, so image quality is unaffected at the same seed
+(text hits for the new prompts are in line with round 1); the timings are not comparable, hence
+excluded. SenseNova (9.9 s / 12.9 s) and FLUX (1.5 s / 3.7 s) share round 1's protocol and are
+included in `results/results-vertical-timings.csv` (156 rows, per prompt).
 
 ### One contact sheet per domain (3 models × 2 sizes)
 
@@ -201,6 +223,18 @@ Game · icons:
 
 ![Game icons](images/vertical/by-domain/game-icon.jpg)
 
+Anime · 2D:
+
+![Anime](images/vertical/by-domain/anime.jpg)
+
+Comic · storyboard:
+
+![Comic](images/vertical/by-domain/comic.jpg)
+
+Illustration · picture book:
+
+![Illustration](images/vertical/by-domain/illustration.jpg)
+
 Single images are in `images/vertical/<size>/<model>/<prompt-id>.jpg`.
 
 ### Selection matrix
@@ -216,6 +250,12 @@ Single images are in `images/vertical/<size>/<model>/<prompt-id>.jpg`.
 | Product on white | any of the three | Just state the requirement clearly |
 | Single game icon | Qwen | The most three-dimensional form and lighting |
 | Icon sets / strictly consistent multi-element | **none** | Degenerates into "each one drawn independently"; needs post-processing or a dedicated model |
+| Anime / game key visual with a big Chinese title | **Qwen or SenseNova** | Both nail the Chinese title hierarchy (OCR 4/4); FLUX garbles the whole block — do not use it for Chinese posters |
+| Chibi sticker sheet (up to ~6 cells) | **SenseNova** | All three deliver; SenseNova's grid, white outlines and expression spread are the tidiest, Qwen's spacing is loose, FLUX's character design drifts |
+| Four-panel comic with Chinese dialogue | **SenseNova** | The only one that puts each line in its own panel; Qwen mismatches panels and adds garbled characters, FLUX is all noise |
+| Black-and-white action storyboard page (no text) | any of the three | The difference is gutter discipline: SenseNova > FLUX > Qwen |
+| Children's picture-book spread with one line of text | **Qwen or SenseNova** | Both get the text right; Qwen also adds a convincing open-book perspective |
+| Chinese ink-wash landscape | **SenseNova** | Best tonal range and detail; Qwen comes out too faint at both sizes |
 
 ## Reproduction
 
@@ -239,8 +279,12 @@ python3 scripts/pack_deliver.py             # contact sheets + delivery bundle
 python3 scripts/vertical_eval.py --size 1024 --models qwen,sense   # vertical set at a uniform 1024²
 python3 scripts/vertical_eval.py --size 2048 --models qwen,sense   # vertical set at native size
 python3 scripts/ocr_vertical.py                                    # OCR scoring of the text prompts
-python3 scripts/pack_vertical.py                                   # six per-domain contact sheets
+python3 scripts/pack_vertical.py                                   # nine per-domain contact sheets
 ```
+
+`pack_vertical.py` labels sheets with Chinese domain names, so point it at a font with CJK glyphs
+otherwise the labels render as boxes:
+`PACK_FONT=/path/to/NotoSansCJK-Bold.ttc PACK_FONT_INDEX=0 python3 scripts/pack_vertical.py`.
 
 The FLUX arm has to run the pipeline directly (`scripts/flux_eval.py`, needs nunchaku and the INT4 KV
 weights, paths via `FLUX_KV_ROOT` / `FLUX_TE_PATH`) because the deployed service only exposes an edit
@@ -261,23 +305,28 @@ python3 scripts/flux_eval.py --prompts prompts-vertical.json --size 1536 --out o
 - The three models do not run the same step count: each used its own service default (Qwen 20 /
   SenseNova 8 / FLUX 4) — a "best configuration" comparison, not an equal-budget one. Qwen's 40-step
   control is in `results/results-fair.json`.
-- The 18 vertical prompts are **written by us**, not a public benchmark; they are a
+- The 26 vertical prompts are **written by us**, not a public benchmark; they are a
   "which model for this job" aid, and the same one-image-per-prompt caveat applies.
+- Eight of the vertical prompts were **added in a second round**: card 3 was held by a render-farm
+  job while they ran, so the Qwen arm used a borrowed card and the more memory-frugal `sequential`
+  offload mode (images are fine; timings are not comparable — see the latency note above). The other
+  two models share one protocol across both rounds.
 
 ## Files
 
 ```
-index.html                   HTML report served by GitHub Pages (headlines + six domain sheets)
+index.html                   HTML report served by GitHub Pages (headlines + nine domain sheets)
 prompts.json                 public prompt text (18, with source and required rendered strings)
-prompts-vertical.json        self-authored vertical prompts (18 across 6 domains, with checkpoints)
+prompts-vertical.json        self-authored vertical prompts (26 across 9 domains, with checkpoints)
 results/                     per-run JSON records incl. OCR scores; timings.csv is rebuilt from logs
 results/logs/                raw run logs (failures and retries included)
-results/results-vertical-*   vertical set: timings and OCR scores (same ruler as above)
+results/logs-vertical/       vertical-set run logs (v-* first round / v2-* added prompts, incl. the wait for a free card)
+results/results-vertical-*   vertical set: timings (156 rows) and OCR scores (same ruler as above)
 images/compare/              three-way contact sheets (GenEval / DPG / LongText / transparency)
 images/round2/               2K re-test, official-recipe re-run, prompt ablation
 images/1k-1024/<model>/      round-1 single images (file name = prompt id)
 images/vertical/<size>/<model>/  vertical set singles (1024 / 2048 / 1536)
-images/vertical/by-domain/   one contact sheet per domain, 3 models × 2 sizes
+images/vertical/by-domain/   one contact sheet per domain (9), 3 models × 2 sizes
 scripts/                     eval, scoring, ablation and packaging scripts
 ```
 
