@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Qwen-Image-2.1 实测笔记 · 博客</title>
+<link rel="canonical" href="https://wangsheng1991.github.io/qwen-image-2.1-bench/blog/">
+<meta name="description" content="Qwen-Image-2.1 三方对打实测的连载笔记：九个垂直领域、口径消融、文字渲染与选型结论。">
+<meta property="og:title" content="Qwen-Image-2.1 实测笔记">
+<meta property="og:description" content="九个垂直领域 26 题 156 张图的三方对打实测笔记：结论、坑点与选型建议。">
+<meta property="og:image" content="https://wangsheng1991.github.io/qwen-image-2.1-bench/images/social-preview-dark.png">
+<meta property="og:url" content="https://wangsheng1991.github.io/qwen-image-2.1-bench/blog/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wangsheng1991.github.io/qwen-image-2.1-bench/images/social-preview-dark.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+<style>
+  :root{ --theme-color:#0969da; }
+  body{ font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif; }
+  .sidebar .app-name-link{ font-weight:700; }
+  .markdown-section img{ border-radius:8px; }
+  .markdown-section code{ background:#f3f4f6; }
+</style>
+</head>
+<body>
+<div id="app">加载中…</div>
+<script>
+  window.$docsify = {
+    name: 'Qwen-Image-2.1 实测笔记',
+    repo: 'wangsheng1991/qwen-image-2.1-bench',
+    homepage: 'README.md',
+    loadSidebar: true,
+    subMaxLevel: 2,
+    relativePath: true,          // 让 md 里的相对图片路径按文件位置解析
+    notFoundPage: true,
+    auto2top: true,
+    search: {
+      placeholder: '搜索笔记…',
+      noData: '没有找到结果',
+    },
+    copyCode: { buttonText: '复制' },
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/zoom-image.min.js"></script>
+<script>
+  // 侧边栏与正文里的中文锚点，交给浏览器即可；这里只做「本站是零构建静态站」的说明注入
+  window.$docsify.plugins = (window.$docsify.plugins || []).concat(function (hook) {
+    hook.afterEach(function (html) {
+      return html;
+    });
+  });
+</script>
+</body>
+</html>

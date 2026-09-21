@@ -3,7 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Qwen-Image-2.1 实测报告：公开榜单 + 六个垂直领域</title>
+<title>Qwen-Image-2.1 实测报告：公开榜单 + 九个垂直领域</title>
+<meta name="description" content="同机同卡同题面，Qwen-Image-2.1 对上 SenseNova-U1.5 与 FLUX.2-klein-KV：公开榜单 18 题 75 张图 + 自建垂直题面 9 领域 26 题 156 张图，逐题出图、耗时与文字渲染准确率全部公开。">
+<link rel="canonical" href="https://wangsheng1991.github.io/qwen-image-2.1-bench/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Qwen-Image-2.1 实测报告">
+<meta property="og:title" content="Qwen-Image-2.1 到底行不行：公开榜单 + 九个垂直领域实测">
+<meta property="og:description" content="三方对打实测：公开榜单 18 题 + 自建垂直题面 9 领域 26 题。组合题、中文长文本、UI 稿、四格漫画……逐题出图与耗时全部公开。">
+<meta property="og:url" content="https://wangsheng1991.github.io/qwen-image-2.1-bench/">
+<meta property="og:image" content="https://wangsheng1991.github.io/qwen-image-2.1-bench/images/social-preview-dark.png">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="640">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Qwen-Image-2.1 到底行不行：公开榜单 + 九个垂直领域实测">
+<meta name="twitter:description" content="三方对打实测：公开榜单 18 题 + 自建垂直题面 9 领域 26 题，逐题出图与耗时全部公开。">
+<meta name="twitter:image" content="https://wangsheng1991.github.io/qwen-image-2.1-bench/images/social-preview-dark.png">
 <style>
 :root{
   color-scheme: light;
@@ -125,7 +139,7 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--border);font-
 
 <main>
   <div class="kicker">三方对打 · 同机同卡同题面 · seed 42</div>
-  <h1 class="hero">Qwen-Image-2.1 到底行不行：公开榜单成绩 + 六个垂直领域的实测</h1>
+  <h1 class="hero">Qwen-Image-2.1 到底行不行：公开榜单成绩 + 九个垂直领域的实测</h1>
   <p class="lede">
     Qwen-Image-2.1 对上 SenseNova-U1.5 与 4 步蒸馏的 FLUX.2-klein-KV，同一台机器、同一张卡、同一份题面。
     <strong>公开榜单那轮暴露的差距主要是口径问题</strong>（官方要的是「提示词增强 + 2K/40 步」，我们首轮全没用），
@@ -311,7 +325,7 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--border);font-
   </section>
 
   <footer>
-    <p style="margin:0 0 6px">口径与局限：每题只出 1 张、单 seed，是抽样体检不是榜单成绩；组合题与长描述题由人眼判读；垂直套件 18 道题是自建的，不是公开榜单；三家没跑在完全相同的步数上（各自用服务默认）。</p>
+    <p style="margin:0 0 6px">口径与局限：每题只出 1 张、单 seed，是抽样体检不是榜单成绩；组合题与长描述题由人眼判读；垂直套件 26 道题是自建的，不是公开榜单；三家没跑在完全相同的步数上（各自用服务默认）。</p>
     <p style="margin:0 0 6px">新增的 8 道题里 Qwen 那臂是在借来的卡上用更省显存的 <code>sequential</code> offload 档跑完的（出图正常，耗时不可比，故未进耗时对比）。</p>
     <p style="margin:0">Qwen-Image-2.1 公开评测集实测 · 代码 MIT / 出图与文档 CC BY 4.0 · 评测对象为第三方模型，商标归各自所有者</p>
   </footer>

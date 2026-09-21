@@ -1,0 +1,7 @@
+- [首页](/)
+- **垂直领域实测**
+  - [九个领域，没有通吃的](vertical-nine-domains.md)
+- **归因**
+  - [差距是口径，不是模型](prompt-rewrite-ablation.md)
+- [主报告（网页版）](https://wangsheng1991.github.io/qwen-image-2.1-bench/)
+- [仓库 README](https://github.com/wangsheng1991/qwen-image-2.1-bench#readme)

@@ -314,7 +314,23 @@ images/2k-retest/  official-recipe/  prompt-rewrite/
 images/vertical/<档位>/<模型>/  垂直套件单图（1024/2048/1536）
 images/vertical/by-domain/   九个领域各一张 3 家 × 2 档并排
 scripts/                     评测、打分、消融、打包脚本
+scripts/make_deck.py         把 slides/slides.md 出成可编辑 PPTX（不依赖 npm / LibreOffice）
+slides/slides.md             中文演示稿源文件（12 页，Slidev，可出网页/PDF/PPTX）
+slides/dist/                 已生成的可编辑 PPT（12 页）
+blog/                        实测笔记（docsify，零构建；线上在 /blog/ 路径）
 ```
+
+## 对外分享
+
+| 用途 | 链接 |
+|---|---|
+| 网页版报告 | <https://wangsheng1991.github.io/qwen-image-2.1-bench/> |
+| 实测笔记（博客） | <https://wangsheng1991.github.io/qwen-image-2.1-bench/blog/> |
+| 演示稿（可编辑 PPT，12 页） | [`slides/dist/qwen-image-2.1-deck.pptx`](slides/dist/qwen-image-2.1-deck.pptx) |
+| 社交分享卡（1280×640） | [`images/social-preview-dark.png`](images/social-preview-dark.png) ｜ [浅色版](images/social-preview-light.png) |
+
+演示稿改内容只需改 `slides/slides.md`，再跑一次 `python scripts/make_deck.py`。
+分享卡由 [socialify](https://socialify.git.ci) 依仓库描述生成（改描述后要加 `&v=N` 破缓存）。
 
 ## License
 
