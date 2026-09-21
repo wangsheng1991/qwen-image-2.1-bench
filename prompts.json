@@ -1,0 +1,158 @@
+[
+ {
+  "id": "ltb-sign-short-en",
+  "source": "LongText-Bench",
+  "tag": "英文招牌短文本",
+  "prompt": "A lively and bustling urban street scene captured at daytime, featuring a colorful assortment of vibrant storefronts lining the busy sidewalk, with diverse groups of pedestrians leisurely strolling past shop windows, chatting or hurrying along on daily errands. Prominently displayed above an inviting, trendy coffee shop is a strikingly large, colorful billboard that clearly reads \"FRESH BREWS, EVERY MORNING, EVERY DAY\", set in bold, stylish, and modern typography that immediately captures attention. Elegantly positioned just below this main statement, the tagline in soft cursive font reads \"Locally Roasted Since 1998\", emphasizing tradition and authenticity. Nearby stands a classic directional street sign, neatly pointing pedestrians toward a calm oasis amid city life, clearly labeled \"CENTRAL PARK - 2 BLOCKS\", guiding visitors with its distinctly readable font. All signage is brightly lit, eye-catching, and clearly contrasts against the detailed backdrop of dynamic city buildings, enhancing the lively urban atmosphere.",
+  "expect_text": [
+   "FRESH BREWS, EVERY MORNING, EVERY DAY",
+   "Locally Roasted Since 1998",
+   "CENTRAL PARK - 2 BLOCKS"
+  ]
+ },
+ {
+  "id": "ltb-print-long-en",
+  "source": "LongText-Bench",
+  "tag": "英文长文本",
+  "prompt": "A cozy, rustic-themed handwritten chalkboard menu of a coffee shop. The main section of the menu board reads \"Freshly Brewed Coffee & Homemade Pastries\" in clear, elegant script. At the top corner of the same board, a smaller cursive note reads \"Served with Love Daily\". Below these central texts, smaller lettering lists \"Open 7 am - 4 pm\" and \"Daily Specials Available Inside\". Additional vintage-inspired signs nearby offer inviting messages such as \"Coffee warms the soul\", \"Fresh pastries baked daily\", and \"Hot chocolate perfection\". The texts are carefully designed, neatly spaced, clear, and visually inviting, enhancing the cozy, welcoming ambiance of the cafe.",
+  "expect_text": [
+   "Freshly Brewed Coffee & Homemade Pastries",
+   "Served with Love Daily",
+   "Open 7 am - 4 pm",
+   "Daily Specials Available Inside",
+   "Coffee warms the soul",
+   "Fresh pastries baked daily",
+   "Hot chocolate perfection"
+  ]
+ },
+ {
+  "id": "ltb-poster-long-en",
+  "source": "LongText-Bench",
+  "tag": "英文长文本·海报",
+  "prompt": "A vibrant, vintage-style promotional poster announcing the annual Riverside Music & Arts Festival. Textual elements arranged clearly and artistically, as follows: At the top-center of the poster, the large artistic title \"Riverside Music & Arts Festival\" is smoothly curved and bold, styled in retro-inspired typography. Directly underneath, in smaller but clear font, is the tagline, \"Celebrate Creativity Under the Open Sky\". Slightly below center and prominently displayed, detailed phrases stating, \"Enjoy Live Bands, Interactive Art Exhibitions and Delicious Local Cuisine\", arranged neatly in three distinct, horizontally-aligned sections, each paired with matching minimalist icons (guitar icon for bands, paintbrush icon for art, fork and knife icon for cuisine). In the lower-third area, clearly visible event information appears spaced evenly across the bottom: \"September 9-10, 2023 Riverside Park Amphitheater Free Entry\". At the bottom-left corner, a cheerful line of text in italicized handwriting suggests, \"Bring friends and family for an unforgettable weekend!\"",
+  "expect_text": [
+   "Riverside Music & Arts Festival",
+   "Celebrate Creativity Under the Open Sky.",
+   "Enjoy Live Bands, Interactive Art Exhibitions and Delicious Local Cuisine",
+   "September 9-10, 2023 Riverside Park Amphitheater Free Entry.",
+   "Bring friends and family for an unforgettable weekend!"
+  ]
+ },
+ {
+  "id": "ltb-sign-short-zh",
+  "source": "LongText-Bench",
+  "tag": "中文招牌短文本",
+  "prompt": "阳光明媚的白天，繁忙的都市街道上，色彩缤纷的店铺沿熙攘的人行道林立，不同人群悠闲地走过商店橱窗，或交谈或匆忙地奔波于日常事务。一家引人注目的时尚咖啡店上方，一块醒目巨大的彩色广告牌清晰地印着“每日新鲜烘焙”，采用粗体、时尚且现代的字体设计，立刻吸引目光。优雅地排布在主标语下方，柔和的书法字体标语“本地烘焙，始于1998”突出了传统与真实。附近立着一块经典的街道指示牌，整洁地指向城市生活中的宁静绿洲，明确标注着“中央公园 - 2公里”，以清晰易读的字体引导游客。所有标识都明亮醒目，与动态都市建筑的细致背景形成鲜明对比，增强了热闹的城市氛围。",
+  "expect_text": [
+   "每日新鲜烘焙",
+   "本地烘焙，始于1998",
+   "中央公园 - 2公里"
+  ]
+ },
+ {
+  "id": "ltb-slide-long-zh",
+  "source": "LongText-Bench",
+  "tag": "中文长文本·幻灯片",
+  "prompt": "一张以艺术化装饰图形为边框、整齐排列的文本信息构成的优雅信息图式幻灯片。顶部正中清晰呈现标题“情绪健康习惯”，周围环绕对称的花卉图案。左上区域“练习正念”字样旁配简约莲花图标，附带短句“保持当下，不带评判地观察，不抵抗地接纳”。顺时针向下，“培养感恩”字样位于开放的手部插图附近，伴随文字“欣赏生活中的简单喜悦，每日发现积极面”。左下区域“保持联系”字样旁配极简聊天气泡图标，提示“建立并维护有意义的关系以维系情感能量”。底部中央“优先睡眠”字样旁是新月图标，附带说明“优质睡眠可同时恢复身心”。右侧沿上行，“规律运动”字样位于跑步者图标旁，标注“锻炼可提升情绪并缓解焦虑”。最后右上角“持续学习”字样配书籍图标。整个幻灯片布局巧妙平衡了清晰性与艺术性，自然引导观众依次阅读每个文本模块。",
+  "expect_text": [
+   "情绪健康习惯",
+   "练习正念",
+   "保持当下，不带评判地观察，不抵抗地接纳",
+   "培养感恩",
+   "欣赏生活中的简单喜悦，每日发现积极面",
+   "保持联系",
+   "建立并维护有意义的关系以维系情感能量",
+   "优先睡眠",
+   "优质睡眠可同时恢复身心",
+   "规律运动",
+   "锻炼可提升情绪并缓解焦虑",
+   "持续学习"
+  ]
+ },
+ {
+  "id": "ltb-poster-long-zh",
+  "source": "LongText-Bench",
+  "tag": "中文长文本·海报",
+  "prompt": "一幅充满活力的复古风格年度河畔音乐与艺术节宣传海报。文本元素清晰而富有艺术性地排列如下：海报顶部中央是艺术化的大型标题“河畔音乐与艺术节”，文字流畅弯曲且加粗，采用复古风格字体设计。正下方以较小但清晰的字体排列着副标题“在开阔天空下庆祝创造力”。中部稍下位置显著展示着详细说明文字“欣赏现场乐队、互动艺术展览和美味本地美食”，整齐排列为三个独立、水平分布的区块，每个区块均配有对应的极简图标（乐队配吉他图标，艺术配画笔图标，美食配叉与刀图标）。海报下三分之一区域，清晰可见的活动信息均匀分布在底部：“2023年9月9日 河畔公园露天剧场 免费入场”。左下角以手写体斜体字呈现欢快提示文字“邀请亲朋好友共度难忘周末！”",
+  "expect_text": [
+   "河畔音乐与艺术节",
+   "在开阔天空下庆祝创造力",
+   "欣赏现场乐队、互动艺术展览和美味本地美食",
+   "2023年9月9日 河畔公园露天剧场 免费入场",
+   "邀请亲朋好友共度难忘周末！"
+  ]
+ },
+ {
+  "id": "geneval-counting-0",
+  "source": "GenEval",
+  "tag": "counting",
+  "prompt": "a photo of two clocks"
+ },
+ {
+  "id": "geneval-counting-1",
+  "source": "GenEval",
+  "tag": "counting",
+  "prompt": "a photo of two backpacks"
+ },
+ {
+  "id": "geneval-colors-2",
+  "source": "GenEval",
+  "tag": "colors",
+  "prompt": "a photo of a blue fire hydrant"
+ },
+ {
+  "id": "geneval-position-3",
+  "source": "GenEval",
+  "tag": "position",
+  "prompt": "a photo of a dog right of a teddy bear"
+ },
+ {
+  "id": "geneval-color_attr-4",
+  "source": "GenEval",
+  "tag": "color_attr",
+  "prompt": "a photo of a purple wine glass and a black apple"
+ },
+ {
+  "id": "geneval-two_object-5",
+  "source": "GenEval",
+  "tag": "two_object",
+  "prompt": "a photo of a bench and a sports ball"
+ },
+ {
+  "id": "geneval-single_object-6",
+  "source": "GenEval",
+  "tag": "single_object",
+  "prompt": "a photo of a bench"
+ },
+ {
+  "id": "dpg-entity",
+  "source": "DPG-Bench",
+  "tag": "长描述·实体细节",
+  "prompt": "An empty space where an invisible man would be, with a pair of horn-rimmed glasses seemingly floating in mid-air, and a pearl bead necklace draped in the space below them. In the space where his hands would be, a smartphone is held, as if being operated by the unseen figure. Around this curious scene, the room appears ordinary, with a couch and a coffee table nearby, upon which rests a scattering of magazines and a remote control."
+ },
+ {
+  "id": "dpg-attribute",
+  "source": "DPG-Bench",
+  "tag": "长描述·属性绑定",
+  "prompt": "A tall glass filled with a vibrant red Bloody Mary cocktail, garnished with a green celery stick and a skewered olive. The glass is beaded with condensation and sits on a small white plate beside a folded white napkin. The cocktail is placed on a dark wooden bar counter, illuminated by warm overhead lighting."
+ },
+ {
+  "id": "dpg-relation",
+  "source": "DPG-Bench",
+  "tag": "长描述·空间关系",
+  "prompt": "a vibrant flower with large, crimson petals and a bright yellow center, standing in stark contrast to the moon's barren, grey surface. The flower's delicate texture is a surprising sight amidst the moon's craters and dust. In the background, the Earth can be seen rising, a swirl of blue and white, providing a breathtaking backdrop to this surreal lunar scene."
+ },
+ {
+  "id": "dpg-global",
+  "source": "DPG-Bench",
+  "tag": "长描述·整体氛围",
+  "prompt": "a detailed oil painting that captures the essence of an elderly raccoon adorned with a distinguished black top hat. The raccoon's fur is depicted with textured, swirling strokes reminiscent of Van Gogh's signature style, and it clutches a bright red apple in its paws. The background swirls with vibrant colors, giving the impression of movement around the still figure of the raccoon."
+ },
+ {
+  "id": "bonus-rgba",
+  "source": "官方模型卡",
+  "tag": "原生透明 RGBA（Qwen 独有）",
+  "prompt": "This is an RGBA image with transparency. A cute cartoon dragon sticker with thick outlines, standing and waving. The image has alpha channel and the background is transparent.",
+  "qwen_only": true
+ }
+]

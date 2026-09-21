@@ -1,0 +1,22 @@
+[
+ {
+  "id": "ltb-print-long-en",
+  "ok": true,
+  "wall_s": 12.3
+ },
+ {
+  "id": "ltb-poster-long-en",
+  "ok": true,
+  "wall_s": 13.1
+ },
+ {
+  "id": "ltb-slide-long-zh",
+  "ok": true,
+  "wall_s": 12.4
+ },
+ {
+  "id": "ltb-poster-long-zh",
+  "ok": true,
+  "wall_s": 13.1
+ }
+]

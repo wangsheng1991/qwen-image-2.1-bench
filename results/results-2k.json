@@ -1,0 +1,44 @@
+[
+ {
+  "id": "geneval-single_object-6",
+  "model": "qwen",
+  "size": 2048,
+  "ok": true,
+  "wall_s": 104.6
+ },
+ {
+  "id": "geneval-single_object-6",
+  "model": "sense",
+  "size": 2048,
+  "ok": true,
+  "wall_s": 13.2
+ },
+ {
+  "id": "geneval-color_attr-4",
+  "model": "qwen",
+  "size": 2048,
+  "ok": true,
+  "wall_s": 112.5
+ },
+ {
+  "id": "geneval-color_attr-4",
+  "model": "sense",
+  "size": 2048,
+  "ok": true,
+  "wall_s": 13.2
+ },
+ {
+  "id": "dpg-global",
+  "model": "qwen",
+  "size": 2048,
+  "ok": true,
+  "wall_s": 112.5
+ },
+ {
+  "id": "dpg-global",
+  "model": "sense",
+  "size": 2048,
+  "ok": true,
+  "wall_s": 13.0
+ }
+]

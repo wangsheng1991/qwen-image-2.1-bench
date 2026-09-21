@@ -1,0 +1,26 @@
+[
+ {
+  "id": "ltb-print-long-en",
+  "ok": true,
+  "seconds": 170.97,
+  "peak": 16.46
+ },
+ {
+  "id": "ltb-poster-long-en",
+  "ok": true,
+  "seconds": 172.82,
+  "peak": 16.51
+ },
+ {
+  "id": "ltb-slide-long-zh",
+  "ok": true,
+  "seconds": 171.13,
+  "peak": 16.52
+ },
+ {
+  "id": "ltb-poster-long-zh",
+  "ok": true,
+  "seconds": 172.54,
+  "peak": 16.5
+ }
+]

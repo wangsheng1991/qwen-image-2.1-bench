@@ -1,0 +1,29 @@
+prompts=18 size=1024 seed=42 models=['qwen', 'sense']
+[sense] 1/18 ltb-sign-short-en          ok 9.8s 
+[sense] 2/18 ltb-print-long-en          ok 9.7s 
+[sense] 3/18 ltb-poster-long-en         ok 9.7s 
+[sense] 4/18 ltb-sign-short-zh          ok 9.7s 
+[qwen] 1/18 ltb-sign-short-en          ok 47.7s backend 46.77s
+[sense] 5/18 ltb-slide-long-zh          ok 9.6s 
+[sense] 6/18 ltb-poster-long-zh         ok 9.7s 
+[sense] 7/18 geneval-counting-0         ok 9.9s 
+[sense] 8/18 geneval-counting-1         ok 9.9s 
+[sense] 9/18 geneval-colors-2           ok 9.8s 
+[sense] 10/18 geneval-position-3         ok 9.9s 
+[qwen] 2/18 ltb-print-long-en          ok 50.0s backend 49.2s
+[sense] 11/18 geneval-color_attr-4       ok 9.8s 
+[sense] 12/18 geneval-two_object-5       ok 9.9s 
+[sense] 13/18 geneval-single_object-6    ok 9.8s 
+[sense] 14/18 dpg-entity                 ok 9.9s 
+[sense] 15/18 dpg-attribute              ok 9.8s 
+[qwen] 3/18 ltb-poster-long-en         ok 56.4s backend 55.46s
+[sense] 16/18 dpg-relation               ok 9.7s 
+[sense] 17/18 dpg-global                 ok 9.7s 
+[qwen] 4/18 ltb-sign-short-zh          ok 53.2s backend 52.48s
+[qwen] 5/18 ltb-slide-long-zh          ok 51.6s backend 51.17s
+[qwen] 6/18 ltb-poster-long-zh         ok 52.0s backend 51.29s
+[qwen] 7/18 geneval-counting-0         ok 51.6s backend 50.86s
+[qwen] 8/18 geneval-counting-1         ok 51.7s backend 51.08s
+[qwen] 9/18 geneval-colors-2           ok 52.1s backend 51.28s
+[qwen] 10/18 geneval-position-3         ok 52.1s backend 51.14s
+[qwen] 11/18 geneval-color_attr-4       FAIL 180.0s  {"error": "RuntimeError: vram_busy: free 17.1 GiB < 19.0 GiB after 180s"}

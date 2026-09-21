@@ -1,0 +1,6 @@
+ltb-sign-short-en      ok 63.82s peak 16.5G
+ltb-print-long-en      ok 65.62s peak 16.46G
+ltb-poster-long-en     ok 66.4s peak 16.51G
+ltb-sign-short-zh      FAIL 16.8s {"error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 96.00 MiB. GPU 0 has a total capacity of 23.65 GiB of which 28.88 MiB is free. Process 1117994 has 422.00 MiB memory in use. Process 
+ltb-slide-long-zh      FAIL 0.0s {"error": "model not ready", "detail": "显存不足，正在重载管线"}
+ltb-poster-long-zh     FAIL 0.0s {"error": "model not ready", "detail": "显存不足，正在重载管线"}

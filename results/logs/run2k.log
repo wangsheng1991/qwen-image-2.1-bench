@@ -1,0 +1,6 @@
+qwen  geneval-single_object-6  2048² ok 102.25s peak 16.36G
+sense geneval-single_object-6  2048² ok 13.2s
+qwen  geneval-color_attr-4     2048² ok 109.85s peak 16.37G
+sense geneval-color_attr-4     2048² ok 13.2s
+qwen  dpg-global               2048² ok 110.71s peak 16.41G
+sense dpg-global               2048² ok 13.0s

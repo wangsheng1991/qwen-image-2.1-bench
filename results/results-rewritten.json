@@ -1,0 +1,26 @@
+[
+ {
+  "id": "geneval-counting-0",
+  "arm": "short",
+  "prompt": "a photo of two clocks",
+  "ok": true,
+  "seconds": 110.49,
+  "peak": 16.36
+ },
+ {
+  "id": "geneval-counting-0",
+  "arm": "rewritten",
+  "prompt": "A realistic photograph of two antique analog clocks placed side by side on a polished wooden desk, both clocks fully inside the frame and clearly separated, each clock has its own round dial, hour and minute hands and printed numerals, soft window daylight from the left, shallow depth of field, 50mm lens, muted warm tones. Exactly two clocks.",
+  "ok": true,
+  "seconds": 109.21,
+  "peak": 16.41
+ },
+ {
+  "id": "geneval-color_attr-4",
+  "arm": "rewritten",
+  "prompt": "A still-life photograph on a rustic wooden table with two objects side by side on the left a translucent purple stemmed wine glass, empty and clean, and right beside it a matte black apple with a short green stem, both objects fully inside the frame and clearly separated, soft directional daylight, gentle contact shadows, shallow depth of field, 50mm lens. Exactly one purple wine glass and one black apple.",
+  "ok": true,
+  "seconds": 111.05,
+  "peak": 16.42
+ }
+]

@@ -1,0 +1,245 @@
+[
+ {
+  "id": "ltb-print-long-en",
+  "chars_want": 157,
+  "chars_ocr": 586,
+  "char_acc": 0.205,
+  "hits": 2,
+  "total": 7,
+  "hit_rate": 0.286,
+  "line_ratios": [
+   0.76,
+   0.74,
+   1.0,
+   0.96,
+   0.68,
+   0.65,
+   0.52
+  ],
+  "ocr_head": "Served Freshly Brewed with LoveDaily Coffee &Homemade Pastries Open7am-4pm AvailableInside Daily Specials oconaad,ototo,fmoyam.aardboonke Coflee Faicmnii + Rnsgyenloade warms akflo bsannth bo prinaiy rnoeh the sou olatun",
+  "arm": "1024²/20步"
+ },
+ {
+  "id": "ltb-print-long-en",
+  "chars_want": 157,
+  "chars_ocr": 542,
+  "char_acc": 0.137,
+  "hits": 3,
+  "total": 7,
+  "hit_rate": 0.429,
+  "line_ratios": [
+   0.37,
+   0.56,
+   1.0,
+   1.0,
+   1.0,
+   0.73,
+   0.76
+  ],
+  "ocr_head": "Coffee Served with warms the soul Coffee warms the soul Open 7 am-4 pm Daily Specials Available Inside Orcnt ptescian ,nrtioe. baked daily Freckerpamrriea Prenueforo Sepreseae Stoma psueane Fresh Popnes bascrokion Fresh ",
+  "arm": "2048²/40步"
+ },
+ {
+  "id": "ltb-print-long-en",
+  "chars_want": 157,
+  "chars_ocr": 171,
+  "char_acc": 0.634,
+  "hits": 3,
+  "total": 7,
+  "hit_rate": 0.429,
+  "line_ratios": [
+   0.68,
+   1.0,
+   0.88,
+   1.0,
+   0.59,
+   0.62,
+   0.64
+  ],
+  "ocr_head": "Served with Love Served with Love Daily hgma Freshly Brewed Coffe fee & Pastries Open 7 a am -4  pm Daily Specials Available Inside Coffee Fresh pastries Hot chocolate ewarms baked daily the soul perfection",
+  "arm": "SenseNova 2048²"
+ },
+ {
+  "id": "ltb-poster-long-en",
+  "chars_want": 226,
+  "chars_ocr": 217,
+  "char_acc": 0.944,
+  "hits": 4,
+  "total": 5,
+  "hit_rate": 0.8,
+  "line_ratios": [
+   0.65,
+   0.85,
+   1.0,
+   0.86,
+   1.0
+  ],
+  "ocr_head": "iverside ArtsFestival Celebrate Creativity Under the Open Sky Enjoy Live Bands, Interactive Art Exhibitions and Delicious Local Cuisine September 9-10, 2023 Riverside Park Amphitheater Free Entry Bring friends and family",
+  "arm": "1024²/20步"
+ },
+ {
+  "id": "ltb-poster-long-en",
+  "chars_want": 226,
+  "chars_ocr": 213,
+  "char_acc": 0.806,
+  "hits": 2,
+  "total": 5,
+  "hit_rate": 0.4,
+  "line_ratios": [
+   0.52,
+   0.68,
+   0.59,
+   0.86,
+   0.97
+  ],
+  "ocr_head": "usic&Arts Festiva Creativity Under the Open Sky Celebrate Enjoy InteractiveArt and Delicious + Live Bands, Exhibitions Local Cuisine September 9-10,2023 Riverside Park Amphitheater Free Entry Bring friends and family for",
+  "arm": "2048²/40步"
+ },
+ {
+  "id": "ltb-poster-long-en",
+  "chars_want": 226,
+  "chars_ocr": 189,
+  "char_acc": 0.733,
+  "hits": 1,
+  "total": 5,
+  "hit_rate": 0.2,
+  "line_ratios": [
+   0.45,
+   0.38,
+   0.83,
+   0.6,
+   0.91
+  ],
+  "ocr_head": "Riverside Enjoy Live Bands, Interactive Art Exhibitions Delicious Local Cuisine Free Entry September 9-10, 9-10,2 2023 Amphitheater Amphitheater Entry Free eCatie Bring t friends and family for an unforgetable weekend!",
+  "arm": "SenseNova 2048²"
+ },
+ {
+  "id": "ltb-slide-long-zh",
+  "chars_want": 108,
+  "chars_ocr": 108,
+  "char_acc": 0.815,
+  "hits": 12,
+  "total": 12,
+  "hit_rate": 1.0,
+  "line_ratios": [
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0
+  ],
+  "ocr_head": "情绪健康习惯 练习正念 保持当下，不带评判地观察， 不抵抗地接纳 持续学习 培养感恩 欣赏生活中的简单喜悦， 每日发现积极面 规律运动 锻炼可提升情绪并缓解焦虑 保持联系 建立并维护有意义的关系 以维系情感能量 优先睡眠 优质睡眠可同时恢复身心",
+  "arm": "1024²/20步"
+ },
+ {
+  "id": "ltb-slide-long-zh",
+  "chars_want": 108,
+  "chars_ocr": 109,
+  "char_acc": 0.811,
+  "hits": 12,
+  "total": 12,
+  "hit_rate": 1.0,
+  "line_ratios": [
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0
+  ],
+  "ocr_head": "情绪健康习惯 练习正念 保持当下，不带评判地观察， 不抵抗地接纳 持续学习 培养感恩 欣赏生活中的简单喜悦， 每日发现积极面 天 规律运动 锻炼可提升情绪 并缓解焦虑 保持联系 建立并维护有意义的关系 以维系情感能量 优先睡眠 优质睡眠可同时恢复身心",
+  "arm": "2048²/40步"
+ },
+ {
+  "id": "ltb-slide-long-zh",
+  "chars_want": 108,
+  "chars_ocr": 121,
+  "char_acc": 0.769,
+  "hits": 11,
+  "total": 12,
+  "hit_rate": 0.917,
+  "line_ratios": [
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   0.78,
+   1.0,
+   0.88,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0
+  ],
+  "ocr_head": "O 情绪健康习惯 练习正念 持续学习 保持当下，不带评判地观察， 不抵抗地接纳。 培养感恩 规律运动 欣赏生活中的简单喜悦， 规律运动 每日发现积极面。 锻炼可提升情绪 并缓解焦虑。 保持联系 建立并维护有 意义义的关系以 维系情感能量。 优先睡眠 优质睡眠可同时恢复身心。 88",
+  "arm": "SenseNova 2048²"
+ },
+ {
+  "id": "ltb-poster-long-zh",
+  "chars_want": 73,
+  "chars_ocr": 60,
+  "char_acc": 0.902,
+  "hits": 3,
+  "total": 5,
+  "hit_rate": 0.6,
+  "line_ratios": [
+   1.0,
+   0.08,
+   0.78,
+   1.0,
+   1.0
+  ],
+  "ocr_head": "河畔音乐与艺术节 欣赏现场乐队 互动艺术展览 美味本地美食 2023年9月9日 河畔公园露天剧场 免费入场 邀请亲朋好友共度难忘周末!",
+  "arm": "1024²/20步"
+ },
+ {
+  "id": "ltb-poster-long-zh",
+  "chars_want": 73,
+  "chars_ocr": 71,
+  "char_acc": 0.986,
+  "hits": 4,
+  "total": 5,
+  "hit_rate": 0.8,
+  "line_ratios": [
+   0.67,
+   1.0,
+   1.0,
+   1.0,
+   1.0
+  ],
+  "ocr_head": "河音乐艺术节 在开阔天空下庆祝创造力 欣赏现场乐队、 互动艺术展览和 美味本地美食 2023年9月9日河畔公园露天剧场免费入场 邀请亲朋好友 共度难忘周末！",
+  "arm": "2048²/40步"
+ },
+ {
+  "id": "ltb-poster-long-zh",
+  "chars_want": 73,
+  "chars_ocr": 75,
+  "char_acc": 0.973,
+  "hits": 4,
+  "total": 5,
+  "hit_rate": 0.8,
+  "line_ratios": [
+   0.78,
+   1.0,
+   1.0,
+   1.0,
+   1.0
+  ],
+  "ocr_head": "可畔音乐与艺术节 在开阔天空下庆祝创造力 欣赏现场乐队、互动艺术展览和美味本地美食 Y1 2023年9月9日 河畔公园露天剧场 免费入场 邀请亲朋好友共度难忘周末！",
+  "arm": "SenseNova 2048²"
+ }
+]

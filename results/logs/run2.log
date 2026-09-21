@@ -1,0 +1,11 @@
+prompts=18 size=1024 seed=42 models=['qwen', 'sense'] only_missing=True
+[qwen] 11/18 geneval-color_attr-4       ok 53.4s backend 52.61s
+[qwen] 12/18 geneval-two_object-5       ok 50.8s backend 49.93s
+[qwen] 13/18 geneval-single_object-6    ok 52.0s backend 51.33s
+[qwen] 14/18 dpg-entity                 ok 53.6s backend 53.02s
+[qwen] 15/18 dpg-attribute              ok 53.6s backend 52.79s
+[qwen] 16/18 dpg-relation               ok 53.2s backend 52.63s
+[qwen] 17/18 dpg-global                 ok 53.2s backend 52.47s
+[qwen] 18/18 bonus-rgba                 ok 53.2s backend 52.48s
+
+完成 8/8 张，用时 423.2s

@@ -1,0 +1,15 @@
+# 运行产物（评测脚本的输出目录，不入库）
+out/
+out2k/
+out_fair/
+deliver/
+compare/
+
+# Python
+__pycache__/
+*.pyc
+
+# OCR 依赖用 --target 装在这里
+ocr-libs/
+
+.DS_Store

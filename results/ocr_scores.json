@@ -1,0 +1,341 @@
+[
+ {
+  "id": "ltb-sign-short-en",
+  "chars_want": 74,
+  "chars_ocr": 75,
+  "char_acc": 0.805,
+  "hits": 1,
+  "total": 3,
+  "hit_rate": 0.333,
+  "line_ratios": [
+   0.71,
+   1.0,
+   0.84
+  ],
+  "ocr_head": "FRESHBREWS EVERYMORNING, CENTRALPARK 2BLOCKS Locally Roasted Since 1998 CENTRAL PARK",
+  "model": "qwen"
+ },
+ {
+  "id": "ltb-print-long-en",
+  "chars_want": 157,
+  "chars_ocr": 586,
+  "char_acc": 0.205,
+  "hits": 2,
+  "total": 7,
+  "hit_rate": 0.286,
+  "line_ratios": [
+   0.76,
+   0.74,
+   1.0,
+   0.96,
+   0.68,
+   0.65,
+   0.52
+  ],
+  "ocr_head": "Served Freshly Brewed with LoveDaily Coffee &Homemade Pastries Open7am-4pm AvailableInside Daily Specials oconaad,ototo,fmoyam.aardboonke Coflee Faicmnii + Rnsgyenloade warms akflo bsannth bo prinaiy rnoeh the sou olatun",
+  "model": "qwen"
+ },
+ {
+  "id": "ltb-poster-long-en",
+  "chars_want": 226,
+  "chars_ocr": 217,
+  "char_acc": 0.944,
+  "hits": 4,
+  "total": 5,
+  "hit_rate": 0.8,
+  "line_ratios": [
+   0.65,
+   0.85,
+   1.0,
+   0.86,
+   1.0
+  ],
+  "ocr_head": "iverside ArtsFestival Celebrate Creativity Under the Open Sky Enjoy Live Bands, Interactive Art Exhibitions and Delicious Local Cuisine September 9-10, 2023 Riverside Park Amphitheater Free Entry Bring friends and family",
+  "model": "qwen"
+ },
+ {
+  "id": "ltb-sign-short-zh",
+  "chars_want": 25,
+  "chars_ocr": 37,
+  "char_acc": 0.806,
+  "hits": 3,
+  "total": 3,
+  "hit_rate": 1.0,
+  "line_ratios": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "ocr_head": "每日新鲜烘焙 本地烘焙，始于1998 中央公园-2公里 每日新鲜烘焙 海汕锅鲜烘焙",
+  "model": "qwen"
+ },
+ {
+  "id": "ltb-slide-long-zh",
+  "chars_want": 108,
+  "chars_ocr": 108,
+  "char_acc": 0.815,
+  "hits": 12,
+  "total": 12,
+  "hit_rate": 1.0,
+  "line_ratios": [
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0
+  ],
+  "ocr_head": "情绪健康习惯 练习正念 保持当下，不带评判地观察， 不抵抗地接纳 持续学习 培养感恩 欣赏生活中的简单喜悦， 每日发现积极面 规律运动 锻炼可提升情绪并缓解焦虑 保持联系 建立并维护有意义的关系 以维系情感能量 优先睡眠 优质睡眠可同时恢复身心",
+  "model": "qwen"
+ },
+ {
+  "id": "ltb-poster-long-zh",
+  "chars_want": 73,
+  "chars_ocr": 60,
+  "char_acc": 0.902,
+  "hits": 3,
+  "total": 5,
+  "hit_rate": 0.6,
+  "line_ratios": [
+   1.0,
+   0.08,
+   0.78,
+   1.0,
+   1.0
+  ],
+  "ocr_head": "河畔音乐与艺术节 欣赏现场乐队 互动艺术展览 美味本地美食 2023年9月9日 河畔公园露天剧场 免费入场 邀请亲朋好友共度难忘周末!",
+  "model": "qwen"
+ },
+ {
+  "id": "ltb-sign-short-en",
+  "chars_want": 74,
+  "chars_ocr": 84,
+  "char_acc": 0.899,
+  "hits": 2,
+  "total": 3,
+  "hit_rate": 0.667,
+  "line_ratios": [
+   0.82,
+   1.0,
+   0.97
+  ],
+  "ocr_head": "FRESH BREWS EVERY MORNING. EVERY DAY Locally Roasted Since 1998 Cofffeeshosk CENTRAL PARK 2 BLOCKS",
+  "model": "sense"
+ },
+ {
+  "id": "ltb-print-long-en",
+  "chars_want": 157,
+  "chars_ocr": 157,
+  "char_acc": 0.726,
+  "hits": 3,
+  "total": 7,
+  "hit_rate": 0.429,
+  "line_ratios": [
+   0.78,
+   1.0,
+   1.0,
+   1.0,
+   0.54,
+   0.62,
+   0.56
+  ],
+  "ocr_head": "Served with Love Daily Brewed Freshly Coffee & Homemade Pastries Open 7 am - 4 pm Daily Specials Available Inside Coffee Fresh pastries Hot chocolate warms baked daily perfection the soul",
+  "model": "sense"
+ },
+ {
+  "id": "ltb-poster-long-en",
+  "chars_want": 226,
+  "chars_ocr": 206,
+  "char_acc": 0.912,
+  "hits": 3,
+  "total": 5,
+  "hit_rate": 0.6,
+  "line_ratios": [
+   0.48,
+   0.85,
+   0.83,
+   0.86,
+   1.0
+  ],
+  "ocr_head": "Riverside Celebrate Creativity Under the Open Sky Enjoy Live Bands, Interactive Art Exhibitions + Delicious Local Cuisine September 9-10, 2023 Riverside Park Amphitiheater, Free Entry Bring friends and family for an unfo",
+  "model": "sense"
+ },
+ {
+  "id": "ltb-sign-short-zh",
+  "chars_want": 25,
+  "chars_ocr": 27,
+  "char_acc": 0.962,
+  "hits": 3,
+  "total": 3,
+  "hit_rate": 1.0,
+  "line_ratios": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "ocr_head": "每日新鲜烘焙 本地烘焙，始于1998 中央公园-2公里 RA",
+  "model": "sense"
+ },
+ {
+  "id": "ltb-slide-long-zh",
+  "chars_want": 108,
+  "chars_ocr": 109,
+  "char_acc": 0.811,
+  "hits": 11,
+  "total": 12,
+  "hit_rate": 0.917,
+  "line_ratios": [
+   1.0,
+   1.0,
+   0.88,
+   1.0,
+   0.54,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0
+  ],
+  "ocr_head": "情绪健康习惯 练习正念 持续学习 保持当下，不带评判地观察， 面 不抵抗地接纳 培养感恩 规律运动 欣赏生活中的简单喜悦， 锻炼可提升情绪并缓解焦虑 每日发现积极面 保持联系 建立并维护有意义的关系 以维系情感能量 优先睡眠 优质睡眠可同时恢复身心",
+  "model": "sense"
+ },
+ {
+  "id": "ltb-poster-long-zh",
+  "chars_want": 73,
+  "chars_ocr": 86,
+  "char_acc": 0.881,
+  "hits": 4,
+  "total": 5,
+  "hit_rate": 0.8,
+  "line_ratios": [
+   1.0,
+   1.0,
+   0.52,
+   1.0,
+   1.0
+  ],
+  "ocr_head": "河畔音乐 与艺术节 在开阔天空下庆祝创造力 欣赏现场乐、互动艺贪 和/艺本展美食 现场乐队 本地展览 美味本地美食 Y1 2023年9月9日河畔公园露天剧场免费入场 邀请亲朋好友共度难忘周末！",
+  "model": "sense"
+ },
+ {
+  "id": "ltb-sign-short-en",
+  "chars_want": 74,
+  "chars_ocr": 88,
+  "char_acc": 0.827,
+  "hits": 1,
+  "total": 3,
+  "hit_rate": 0.333,
+  "line_ratios": [
+   0.77,
+   1.0,
+   0.78
+  ],
+  "ocr_head": "SWS F REE BREW EVERY MORNING, EVERYDAY AE CENRALPARK Locally Roasted Since 1998 CENTRARK-2 BLOCKS PCY GD",
+  "model": "flux"
+ },
+ {
+  "id": "ltb-print-long-en",
+  "chars_want": 157,
+  "chars_ocr": 195,
+  "char_acc": 0.42,
+  "hits": 2,
+  "total": 7,
+  "hit_rate": 0.286,
+  "line_ratios": [
+   0.51,
+   0.7,
+   1.0,
+   1.0,
+   0.63,
+   0.77,
+   0.76
+  ],
+  "ocr_head": "Served will Coffee Daily Lovet Coffee warms Sewedwidl Freshyed Coffe Fresh Coffee& paked hop Frcsh pastries hakeld daly Hordemade ofpiupastales iLsae Pastries Hot chocol perfection Open 7 am-4 pm Daily Specials Available",
+  "model": "flux"
+ },
+ {
+  "id": "ltb-poster-long-en",
+  "chars_want": 226,
+  "chars_ocr": 174,
+  "char_acc": 0.625,
+  "hits": 1,
+  "total": 5,
+  "hit_rate": 0.2,
+  "line_ratios": [
+   0.42,
+   0.3,
+   0.86,
+   0.68,
+   0.63
+  ],
+  "ocr_head": "Enjoy Live Bands, Interactive Art Exhiibitions and Dedicious Local Cuisine 111 September 9-10, 2023 Bring friends and family for an Riversidbe Park Amphitheater unforvtable weekend! Frre htry Free Entry",
+  "model": "flux"
+ },
+ {
+  "id": "ltb-sign-short-zh",
+  "chars_want": 25,
+  "chars_ocr": 36,
+  "char_acc": 0.262,
+  "hits": 0,
+  "total": 3,
+  "hit_rate": 0.0,
+  "line_ratios": [
+   0.0,
+   0.4,
+   0.33
+  ],
+  "ocr_head": "与方耗动 北右薇 政海花 全合纯齿康，壮生1998 中心公一2 YONICFERE",
+  "model": "flux"
+ },
+ {
+  "id": "ltb-slide-long-zh",
+  "chars_want": 108,
+  "chars_ocr": 64,
+  "char_acc": 0.186,
+  "hits": 0,
+  "total": 12,
+  "hit_rate": 0.0,
+  "line_ratios": [
+   0.15,
+   0.22,
+   0.14,
+   0.0,
+   0.29,
+   0.22,
+   0.12,
+   0.22,
+   0.29,
+   0.0,
+   0.09,
+   0.0
+  ],
+  "ocr_head": "循情源慷糠 侵荔工念 年这派 倍俗节正，不的拌 携挂可推捐的 不死的议 先付物 拮物線 在生活年的的欲系， 每已宗或面 赏手 乌维清能 顾文可十时饿依心",
+  "model": "flux"
+ },
+ {
+  "id": "ltb-poster-long-zh",
+  "chars_want": 73,
+  "chars_ocr": 50,
+  "char_acc": 0.13,
+  "hits": 0,
+  "total": 5,
+  "hit_rate": 0.0,
+  "line_ratios": [
+   0.11,
+   0.0,
+   0.04,
+   0.3,
+   0.09
+  ],
+  "ocr_head": "技阿老国，夸你安恭叶爱卧 amier解美夕双土安浓诵能 230329日河公自公遇剃发 大使邵相明观！ 舞人入",
+  "model": "flux"
+ }
+]

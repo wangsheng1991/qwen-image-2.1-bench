@@ -1,0 +1,12 @@
+GPU free 21.66 GiB
+call sig: (self, image: list[PIL.Image.Image] | PIL.Image.Image | None = None, prompt: str | list[str] = None, height: int | None = None, width: int | None = None, num_inference_steps: int = 4, sigmas: list[float] | None = None, num_images_per_prompt: int = 1, generator: torch._C.Generator | list[torch._C.Gen
+2026-09-20 16:53:45,877 - INFO - _init_lora_state: 112 quantized modules snapshotted, 0 unquantized params snapshotted
+Loading pipeline components...:   0%|          | 0/5 [00:00<?, ?it/s]Loading pipeline components...:  80%|████████  | 4/5 [00:00<00:00,  6.49it/s]Loading pipeline components...: 100%|██████████| 5/5 [00:00<00:00,  7.15it/s]
+Expected types for text_encoder: (<class 'transformers.models.qwen3.modeling_qwen3.Qwen3ForCausalLM'>,), got <class 'nunchaku.models.text_encoders.qwen3_text_encoder.NunchakuQwen3TextEncoderModel'>.
+loaded in 5.3s
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:00<00:00,  4.58it/s] 50%|█████     | 2/4 [00:00<00:00,  2.83it/s] 75%|███████▌  | 3/4 [00:01<00:00,  2.34it/s]100%|██████████| 4/4 [00:01<00:00,  2.15it/s]100%|██████████| 4/4 [00:01<00:00,  2.35it/s]
+[flux] 11/18 geneval-color_attr-4       ok 5.18s 
+  0%|          | 0/4 [00:00<?, ?it/s] 50%|█████     | 2/4 [00:00<00:00,  3.86it/s] 75%|███████▌  | 3/4 [00:01<00:00,  2.72it/s]100%|██████████| 4/4 [00:01<00:00,  2.36it/s]100%|██████████| 4/4 [00:01<00:00,  2.57it/s]
+[flux] 13/18 geneval-single_object-6    ok 3.66s 
+  0%|          | 0/4 [00:00<?, ?it/s] 50%|█████     | 2/4 [00:00<00:00,  3.86it/s] 75%|███████▌  | 3/4 [00:01<00:00,  2.72it/s]100%|██████████| 4/4 [00:01<00:00,  2.36it/s]100%|██████████| 4/4 [00:01<00:00,  2.57it/s]
+[flux] 17/18 dpg-global                 ok 3.27s 
