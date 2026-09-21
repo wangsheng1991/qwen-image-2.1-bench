@@ -1,0 +1,151 @@
+[
+ {
+  "id": "arch-villa-dusk",
+  "domain": "建筑·外景",
+  "domain_en": "architecture-exterior",
+  "lang": "en",
+  "prompt": "Architectural photography of a modern minimalist villa at dusk: two cantilevered concrete volumes stacked with a 4 metre glass corner, warm interior light spilling out, a black infinity pool in the foreground mirroring the facade, teak slat screening on the upper floor, blue-hour sky with a soft gradient, wet stone paving, shot on a 24 mm tilt-shift lens so all vertical lines stay perfectly parallel, no people, high-end real-estate brochure look.",
+  "rubric": ["垂直线是否竖直（无透视畸变）", "体量与结构是否合理（挑檐/悬挑有支撑感）", "材质（清水混凝土/木格栅/玻璃）是否可信", "黄昏氛围与水面倒影"]
+ },
+ {
+  "id": "arch-tower-lowangle",
+  "domain": "建筑·外景",
+  "domain_en": "architecture-exterior",
+  "lang": "en",
+  "prompt": "Low-angle photograph looking straight up at a 40-storey mixed-use tower: a glass curtain wall with a subtle vertical fin rhythm, camera tilted back on a wide lens, strong converging perspective, the tower framed between two lower brick buildings, a clear late-afternoon sky with a few thin clouds, crisp reflections in the glass, no people, architectural magazine cover.",
+  "rubric": ["仰视透视是否连贯", "幕墙秩序（楼层线/竖挺）是否规整", "玻璃反射是否合理", "两侧低层建筑是否正常"]
+ },
+ {
+  "id": "arch-detail-facade",
+  "domain": "建筑·外景",
+  "domain_en": "architecture-exterior",
+  "lang": "en",
+  "prompt": "Close-up architectural detail: a board-formed fair-faced concrete wall meeting a warm oak slat screen, a crisp diagonal shadow pattern cast by a louvre, a brushed stainless steel reveal throwing one thin bright line, low morning sun, shallow depth of field, the materials read as physically accurate, no text, no people.",
+  "rubric": ["清水混凝土的模板纹与气孔", "木格栅的间距与厚度一致", "阴影方向/软硬符合单一光源", "接缝处理自然"]
+ },
+ {
+  "id": "interior-living-japandi",
+  "domain": "建筑·室内",
+  "domain_en": "architecture-interior",
+  "lang": "en",
+  "prompt": "Interior photograph of a Japandi living room: a low linen sofa in oatmeal, a solid oak coffee table, a paper floor lamp, a large window with sheer curtains diffusing afternoon light, dried branches in a ceramic vase, a micro-cement wall, a light oak floor, a soft wool rug, calm muted palette, 24 mm lens, one-point perspective straight on, magazine interior feature, no people, no text.",
+  "rubric": ["一点透视是否正", "家具比例与落地关系", "采光与阴影是否一致", "整体调性（低饱和）"]
+ },
+ {
+  "id": "interior-cafe-counter",
+  "domain": "建筑·室内",
+  "domain_en": "architecture-interior",
+  "lang": "en",
+  "prompt": "Interior of a small specialty coffee bar: an L-shaped oak counter with a two-group espresso machine, a chalkboard menu on the wall behind (deliberately out of focus and illegible), pendant lights in a row above the counter, terrazzo floor, a pastry case with croissants, warm evening light, two customers' silhouettes soft in the foreground, shot on a 35 mm lens at eye level, a cosy and believable spatial layout.",
+  "rubric": ["空间动线是否成立（吧台/座位/过道）", "设备细节（咖啡机/磨豆机）是否可信", "灯光层次", "景深与前景虚化"]
+ },
+ {
+  "id": "interior-bedroom-night",
+  "domain": "建筑·室内",
+  "domain_en": "architecture-interior",
+  "lang": "en",
+  "prompt": "Interior photograph of a hotel bedroom at night: an upholstered bed with crisp white linens, a linear LED cove behind the headboard washing warm light across acoustic panels, a slim black floor lamp, a sheer curtain with city bokeh behind it, a marble bedside table with a single ceramic cup, shot on a 24 mm lens, symmetrical composition, quiet luxury, no people, no text.",
+  "rubric": ["夜景灯光是否分层（灯带/落地灯/城市光）", "床品与布料的褶皱", "对称构图", "过曝控制（灯带不能糊成一片白）"]
+ },
+ {
+  "id": "portrait-studio-rim",
+  "domain": "人像",
+  "domain_en": "portrait",
+  "lang": "en",
+  "prompt": "Studio portrait photograph of a 30-year-old woman looking slightly off-camera: a soft large key light from the left, a crisp rim light separating her hair from a dark grey seamless backdrop, visible natural skin texture with pores and fine hair, minimal makeup, catchlights in both eyes, shot on an 85 mm f/1.4 lens, chest-up framing, neutral colour grade, no text, no watermark.",
+  "rubric": ["皮肤真实感（毛孔/绒毛，不能塑料感）", "边缘光是否分离头发", "双眼眼神光", "五官比例无畸变"]
+ },
+ {
+  "id": "portrait-elderly-macro",
+  "domain": "人像",
+  "domain_en": "portrait",
+  "lang": "en",
+  "prompt": "Extreme close-up portrait of an 80-year-old fisherman: deep facial wrinkles, weathered tanned skin, white stubble, a few broken capillaries on the cheeks, bright blue-grey eyes with sharp iris detail, individual white eyebrow hairs, natural overcast daylight, shot on a 105 mm macro lens, the background is a soft grey harbour bokeh.",
+  "rubric": ["皱纹与毛发的高频细节", "虹膜/瞳孔结构", "布光自然（阴天散射）", "无涂抹感"]
+ },
+ {
+  "id": "portrait-group-five",
+  "domain": "人像",
+  "domain_en": "portrait",
+  "lang": "en",
+  "prompt": "Candid group photograph of five people of different ages — a grandmother in her 70s, a father in his 40s, a mother, a teenage boy and a 6-year-old girl — standing together outdoors in a park in late-afternoon golden light, all five faces clearly visible, natural relaxed expressions, everyone looking at the camera, hands resting naturally, shot on a 50 mm lens at chest height, believable clothing for the season.",
+  "rubric": ["五张脸是否各不相同（不能同一张脸复制）", "手部与手指是否正常", "年龄/身高差是否合理", "合影的自然度"]
+ },
+ {
+  "id": "portrait-fashion-fullbody",
+  "domain": "人像",
+  "domain_en": "portrait",
+  "lang": "en",
+  "prompt": "Full-body fashion editorial photograph of a woman walking in a long camel wool coat over a cream knit, wide-leg trousers and leather ankle boots, mid-stride with the coat in motion, shot on a 35 mm lens from hip height, an empty city street with wet asphalt at dawn, soft overcast light, natural proportions with correct anatomy, the whole body inside the frame with space above the head.",
+  "rubric": ["全身比例与解剖", "服装材质与褶皱", "动作中的布料动势", "构图（头顶留白、脚不被裁）"]
+ },
+ {
+  "id": "ui-mobile-home-zh",
+  "domain": "App·UI",
+  "domain_en": "app-ui",
+  "lang": "zh",
+  "prompt": "UI design mockup of a Chinese health-tracking mobile app home screen, tall phone aspect ratio, light theme: a status bar at the top, a greeting 早上好，小林 with a round avatar, a large circular progress ring showing 步数 8,642 / 10,000, three rounded stat cards labelled 睡眠、心率、卡路里 each with a big number, a line chart titled 本周趋势, and a bottom tab bar with four icons labelled 首页、数据、训练、我的. Clean sans-serif Chinese typography, generous spacing, flat design, high fidelity, straight-on view.",
+  "expect_text": ["早上好，小林", "步数", "8,642", "10,000", "睡眠", "心率", "卡路里", "本周趋势", "首页", "数据", "训练", "我的"],
+  "rubric": ["中文文字准确率（OCR）", "控件层级与对齐", "间距节奏（8pt 网格）", "图标一致性"]
+ },
+ {
+  "id": "ui-login-en",
+  "domain": "App·UI",
+  "domain_en": "app-ui",
+  "lang": "en",
+  "prompt": "High-fidelity UI mockup of a SaaS web login page, 16:9, light theme with a subtle gradient background: a centred white card with the wordmark NORTHWIND, a headline Welcome back, two input fields labelled Email address and Password, a primary blue button Sign in, a secondary text link Forgot password?, and a row of three social sign-in buttons. Precise alignment, consistent 8 px spacing, modern sans-serif, no placeholder lorem ipsum.",
+  "expect_text": ["NORTHWIND", "Welcome back", "Email address", "Password", "Sign in", "Forgot password?"],
+  "rubric": ["英文字准确率（OCR）", "表单控件对齐", "按钮层级（主/次）", "留白与栅格"]
+ },
+ {
+  "id": "ui-dashboard-dark",
+  "domain": "App·UI",
+  "domain_en": "app-ui",
+  "lang": "en",
+  "prompt": "Dark-theme analytics dashboard UI, 16:9: a left sidebar with five labelled entries Overview, Traffic, Revenue, Users, Settings, a top bar with a search field and a date range picker reading Sep 1 – Sep 30, 2025, a KPI row with four cards showing Revenue ¥1,284,300 / Orders 8,412 / Conversion 3.6% / Refund 0.8%, a large line chart with axis labels, and a data table with the columns Order, Customer, Amount, Status. Crisp 1 px borders, tabular numerals, professional dark UI.",
+  "expect_text": ["Overview", "Traffic", "Revenue", "Users", "Settings", "Sep 1 – Sep 30, 2025", "1,284,300", "8,412", "3.6%", "0.8%", "Order", "Customer", "Amount", "Status"],
+  "rubric": ["英数字准确率（OCR，尤其数字）", "图表是否像真数据（坐标轴/趋势）", "深色对比度与分隔线", "信息密度与呼吸感"]
+ },
+ {
+  "id": "ui-appstore-three",
+  "domain": "App·UI",
+  "domain_en": "app-ui",
+  "lang": "zh",
+  "prompt": "Three phone screenshots arranged side by side for an App Store listing, tall aspect ratios with rounded corners and soft shadows: screen one is a sleep-tracking dashboard titled 睡眠质量 92 分 with a sleep-stage chart, screen two is an alarm list with three items and green toggles, screen three is a settings screen with a subscription card reading PRO · ¥18/月. Consistent purple accent colour, matching typography across all three screens, flat pastel backgrounds.",
+  "expect_text": ["睡眠质量", "92 分", "PRO", "¥18/月"],
+  "rubric": ["三屏风格是否一致", "中文文字准确率", "控件细节（开关/卡片圆角）", "排布与阴影统一"]
+ },
+ {
+  "id": "product-skincare-white",
+  "domain": "商品·电商",
+  "domain_en": "product",
+  "lang": "en",
+  "prompt": "E-commerce product photograph on a pure white seamless background: a matte glass serum bottle with a dropper cap and a pump bottle beside it, both in soft sage green with brushed metal caps, the label reads AURA in clean serif capitals with Hydrating Serum 30 ml below it, 45-degree three-quarter view, soft even studio lighting from above, subtle contact shadow, no props, catalogue standard.",
+  "expect_text": ["AURA", "Hydrating Serum", "30 ml"],
+  "rubric": ["瓶身结构与透视", "标签文字准确率", "高光/反射是否像玻璃与金属", "白底是否干净（无杂色/渐变）"]
+ },
+ {
+  "id": "product-watch-lifestyle",
+  "domain": "商品·电商",
+  "domain_en": "product",
+  "lang": "en",
+  "prompt": "Lifestyle product photograph of a stainless-steel dive watch on a weathered wooden dock beside a mooring rope, the sapphire crystal catching a specular highlight from the low sun, the dial showing a blue sunburst finish with applied indices and a date window, shallow depth of field with water bokeh in the background, shot on a 90 mm macro at f/5.6, believable metal reflections.",
+  "rubric": ["表盘元素（刻度/指针/日历窗）是否完整", "金属拉丝与镜面反射", "场景与主体关系", "浅景深过渡"]
+ },
+ {
+  "id": "game-icon-fantasy",
+  "domain": "游戏·图标",
+  "domain_en": "game-icon",
+  "lang": "en",
+  "prompt": "Game app icon: a single rounded-square tile with a subtle inner bevel, a stylised emerald-green dragon eye with a vertical slit pupil and a glowing amber iris, a cracked obsidian background, dramatic rim lighting from the upper left, high contrast, still readable at 64 px, centred composition, no text, mobile game store quality.",
+  "rubric": ["小尺寸下是否可读（缩到 64px）", "光效与材质", "造型是否干净（无杂点）", "图标外框一致性"]
+ },
+ {
+  "id": "game-icon-line-set",
+  "domain": "游戏·图标",
+  "domain_en": "game-icon",
+  "lang": "en",
+  "prompt": "A set of twelve consistent line icons arranged in a 4 by 3 grid on a light grey background: sword, shield, potion, scroll, map, compass, key, chest, torch, helmet, bow and coin — all drawn with the same 2 px rounded stroke, the same corner radius and the same visual weight, monochrome dark ink, even spacing, flat vector style, no text.",
+  "rubric": ["12 个图标是否都在且可辨认", "线宽/圆角是否统一", "栅格间距是否等距", "风格是否一致（不能有的立体有的扁平）"]
+ }
+]

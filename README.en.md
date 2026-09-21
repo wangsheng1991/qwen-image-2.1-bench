@@ -125,6 +125,98 @@ though: 172 s/image at 2048²/40 steps vs 52 s/image at 1024²/20 steps.
 | **Sampling and scoring**: 1 image/prompt, single seed, n=4–7; human yes/no instead of Mask2Former | medium | official GenEval is 553 prompts × 4 images with an object detector |
 | **Resolution / steps** | large for structural failures, small for text | bench: broken at 1K, fine at 2K; long-text scores flat |
 
+## Vertical domains (architecture / portrait / app UI / product / game icons)
+
+Leaderboards measure general capability, which does not answer *"which model should take this job"*.
+So we wrote a second set of **18 vertical prompts** — **self-authored, not a public benchmark**, but
+each one carries its own checkpoints ([`prompts-vertical.json`](prompts-vertical.json)). All three
+models ran at two sizes: a uniform 1024² (comparable across models) and each model's recommended size
+(Qwen / SenseNova 2048², FLUX 1536).
+
+### Verdict by domain
+
+| Domain | Prompts | Recommended | Key finding |
+|---|---|---|---|
+| Architecture · exterior | 3 | any of the three | All produce commercial-grade mood images. The difference is in detail: **SenseNova 1024 and FLUX 1536 hallucinate large signage on glass curtain walls** (`ARCHITECTURE` / `NEAC`); Qwen does not |
+| Architecture · interior | 3 | **SenseNova** | Most stable spatial layering and lighting. Qwen drops mood constraints at 1024²: the night bedroom came out as daylight |
+| Portrait | 4 | **SenseNova** (close-ups) / any (group, full-body) | The elderly close-up shows the largest gap: SenseNova's wrinkles, beard hair and capillaries are photographic, Qwen is visibly smoother. In the five-person group all three drew five distinct faces with no broken hands |
+| App · UI | 4 | **SenseNova** | The only one that renders a correct Chinese UI already at 1024² (12/12 lines). At 1024² Qwen **shrinks the whole mockup into a small block in the middle with ghosting**, only recovering at 2048² (line hits 5/12 → 11/12, char accuracy 63.0% → 86.4%). FLUX gets all Chinese wrong |
+| Product · e-commerce | 2 | any of the three | White-background retouch and lifestyle shots are both shippable. Qwen missed the "two bottles" at 1024², but its label text is the most accurate (100%) |
+| Game · icons | 2 | Qwen (single icon) | A single icon is commercial-grade from all three; **the "12 style-consistent line icons" prompt breaks all three** — count, stroke weight and style all drift |
+
+### Objective scoring of the text-bearing prompts (OCR)
+
+| Prompt | Size | Qwen-Image-2.1 | SenseNova-U1.5 | FLUX.2-klein-KV |
+|---|---|---|---|---|
+| `ui-mobile-home-zh` (Chinese health-app home) | 1024² | 63.0% · 5/12 | **80.9% · 12/12** | 38.0% · 2/12 |
+| | native | **86.4% · 11/12** | 82.6% · 12/12 | 33.0% · 2/12 |
+| `ui-login-en` (English login page) | 1024² | 85.3% · 6/6 | **96.8% · 6/6** | 77.9% · 5/6 |
+| | native | 96.0% · 5/6 | **99.2% · 6/6** | 83.0% · 6/6 |
+| `ui-dashboard-dark` (dark data dashboard) | 1024² | 29.8% · 13/14 | 13.3% · 13/14 | 17.1% · 12/14 |
+| | native | 34.1% · 13/14 | 24.4% · 13/14 | 22.2% · 11/14 |
+| `ui-appstore-three` (three store screens) | 1024² | **33.3% · 4/4** | 22.4% · 4/4 | 22.4% · 3/4 |
+| | native | 23.8% · 4/4 | 18.2% · 3/4 | 14.4% · 3/4 |
+| `product-skincare-white` (label on a white bottle) | 1024² | **100% · 3/3** | 66.7% · 3/3 | 72.1% · 3/3 |
+| | native | 66.7% · 3/3 | 66.7% · 3/3 | **100% · 3/3** |
+| **mean** | 1024² | 62.3% · 79.5% | 56.0% · **97.4%** | 45.5% · 64.1% |
+| | native | 61.4% · 92.3% | 58.2% · **94.9%** | 50.5% · 64.1% |
+
+Same ruler as the public-benchmark round (identical RapidOCR scoring script), with two caveats:
+
+- On the dark dashboard **char accuracy is low for all three (13–34%)**, because the models invent a
+  screenful of table data; the **line hit rate (11–13/14) is what reflects "did it write the strings
+  we asked for"**. For UI capability, read hit rate, not char accuracy.
+- Text density differs between the two sizes, so do not compare char accuracy across sizes directly.
+
+### Latency (median of 18 prompts)
+
+| | Qwen-Image-2.1 | SenseNova-U1.5 | FLUX.2-klein-KV |
+|---|---|---|---|
+| 1024² median | 53.2 s | 9.8 s | **1.5 s** |
+| native median | 113.1 s (2048²) | 13.2 s (2048²) | **3.8 s** (1536²) |
+
+### One contact sheet per domain (3 models × 2 sizes)
+
+Architecture · exterior:
+
+![Architecture exterior](images/vertical/by-domain/architecture-exterior.jpg)
+
+Architecture · interior:
+
+![Architecture interior](images/vertical/by-domain/architecture-interior.jpg)
+
+Portrait:
+
+![Portrait](images/vertical/by-domain/portrait.jpg)
+
+App · UI:
+
+![App UI](images/vertical/by-domain/app-ui.jpg)
+
+Product · e-commerce:
+
+![Product](images/vertical/by-domain/product.jpg)
+
+Game · icons:
+
+![Game icons](images/vertical/by-domain/game-icon.jpg)
+
+Single images are in `images/vertical/<size>/<model>/<prompt-id>.jpg`.
+
+### Selection matrix
+
+| Job | Pick | Why |
+|---|---|---|
+| Architecture render (mood + materials) | **SenseNova** | Most accurate light at dusk / night; but it writes hallucinated signage on glass facades, so eyeball every output |
+| Interior render | **SenseNova** | Most stable spatial relations and light layering |
+| Portrait close-up (real skin) | **SenseNova** | The high-frequency detail gap is obvious; Qwen is smoother |
+| Group / full-body | any of the three | Proportions hold, faces are distinct |
+| App / web UI mock (Chinese text) | **SenseNova** | Usable already at 1024², and 5.4× faster than Qwen |
+| App / web UI mock (English only) | Qwen @2048², or SenseNova | Qwen's English labels are the cleanest, but at 1024² it shrinks into a block with ghosting |
+| Product on white | any of the three | Just state the requirement clearly |
+| Single game icon | Qwen | The most three-dimensional form and lighting |
+| Icon sets / strictly consistent multi-element | **none** | Degenerates into "each one drawn independently"; needs post-processing or a dedicated model |
+
 ## Reproduction
 
 Requirements: two OpenAI-shaped image endpoints (`POST /v1/images/generations` with `prompt`,
@@ -143,10 +235,20 @@ python3 scripts/ocr_score.py                # objective OCR scoring for text pro
 python3 scripts/eval_fair.py                # official recipe (2048²/40 steps)
 python3 scripts/rewrite_ablation.py         # prompt-only ablation
 python3 scripts/pack_deliver.py             # contact sheets + delivery bundle
+
+python3 scripts/vertical_eval.py --size 1024 --models qwen,sense   # vertical set at a uniform 1024²
+python3 scripts/vertical_eval.py --size 2048 --models qwen,sense   # vertical set at native size
+python3 scripts/ocr_vertical.py                                    # OCR scoring of the text prompts
+python3 scripts/pack_vertical.py                                   # six per-domain contact sheets
 ```
 
-The FLUX arm has to run the pipeline directly (`scripts/flux_eval.py`) because the deployed service
-only exposes an edit endpoint.
+The FLUX arm has to run the pipeline directly (`scripts/flux_eval.py`, needs nunchaku and the INT4 KV
+weights, paths via `FLUX_KV_ROOT` / `FLUX_TE_PATH`) because the deployed service only exposes an edit
+endpoint:
+
+```bash
+python3 scripts/flux_eval.py --prompts prompts-vertical.json --size 1536 --out out_vertical/1536/flux
+```
 
 ## Limitations — read these with the numbers
 
@@ -159,6 +261,24 @@ only exposes an edit endpoint.
 - The three models do not run the same step count: each used its own service default (Qwen 20 /
   SenseNova 8 / FLUX 4) — a "best configuration" comparison, not an equal-budget one. Qwen's 40-step
   control is in `results/results-fair.json`.
+- The 18 vertical prompts are **written by us**, not a public benchmark; they are a
+  "which model for this job" aid, and the same one-image-per-prompt caveat applies.
+
+## Files
+
+```
+prompts.json                 public prompt text (18, with source and required rendered strings)
+prompts-vertical.json        self-authored vertical prompts (18 across 6 domains, with checkpoints)
+results/                     per-run JSON records incl. OCR scores; timings.csv is rebuilt from logs
+results/logs/                raw run logs (failures and retries included)
+results/results-vertical-*   vertical set: timings and OCR scores (same ruler as above)
+images/compare/              three-way contact sheets (GenEval / DPG / LongText / transparency)
+images/round2/               2K re-test, official-recipe re-run, prompt ablation
+images/1k-1024/<model>/      round-1 single images (file name = prompt id)
+images/vertical/<size>/<model>/  vertical set singles (1024 / 2048 / 1536)
+images/vertical/by-domain/   one contact sheet per domain, 3 models × 2 sizes
+scripts/                     eval, scoring, ablation and packaging scripts
+```
 
 ## License
 

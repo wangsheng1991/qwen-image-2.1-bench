@@ -126,6 +126,95 @@ FLUX 2 Pro = 54.57，宣传语气的来源就是这个 5.7 分的差。而那张
 | **抽样与打分口径** | 中 | 每题 1 张、单 seed、n=4~7；GenEval 官方是 553 题 × 4 张 + Mask2Former 自动打分，本仓库组合题是人眼判读 |
 | **分辨率/步数** | 结构性失败大、文字类小 | 长椅 1K 崩 / 2K 正常；长文本指标 71.7% → 68.5%，没看到提升 |
 
+## 垂直领域实测（建筑 / 人像 / App·UI / 商品 / 游戏图标）
+
+公共榜单考的是通用能力，和「这个活到底该用哪个模型」对不上。所以另起一套 **18 道垂直题面**——
+**自建、不是公开榜单**，但每题都写明考点与判定项（[`prompts-vertical.json`](prompts-vertical.json)）。
+三家各跑两档分辨率：统一的 1024²（可横向比）+ 各家推荐分辨率（Qwen / SenseNova 2048²、FLUX 1536）。
+
+### 按领域给结论
+
+| 领域 | 题数 | 推荐 | 关键发现 |
+|---|---|---|---|
+| 建筑·外景 | 3 | 三家都能用 | 商业级氛围图三家都出得来。差别在细节：**SenseNova 1024 和 FLUX 1536 会在玻璃幕墙上「幻觉」出大字号招牌**（`ARCHITECTURE` / `NEAC`），Qwen 没有这个毛病 |
+| 建筑·室内 | 3 | **SenseNova** | 空间与灯光层次最稳。Qwen 在 1024² 会丢掉氛围约束：夜景卧室题出成了白天 |
+| 人像 | 4 | **SenseNova**（特写）/ 三家都行（合影、全身） | 老年人特写这种高频细节题差距最大：SenseNova 的皱纹、胡须、毛细血管是照片级的，Qwen 明显更平滑。五人合影三家都给了 5 张不同的脸，手指无可见崩坏 |
+| App·UI | 4 | **SenseNova** | 只有它在 1024² 就把中文界面写对（12/12 条命中）。Qwen 在 1024² 会把整张 mockup **缩成中间一小块并留幽灵重影**，2048² 才恢复（命中 5/12 → 11/12，字符准确率 63.0% → 86.4%）。FLUX 中文全错 |
+| 商品·电商 | 2 | 三家都可用 | 白底精修与场景图都能直接交付。Qwen 在 1024² 漏了「两只瓶子」，但标签文字它最准（100%） |
+| 游戏·图标 | 2 | Qwen（单个图标） | 单个图标三家都能出商业级；**「12 个风格一致的线性图标」三家全崩**——数量、线宽、风格都不统一 |
+
+### 带文字题目的客观打分（OCR）
+
+| 题目 | 档位 | Qwen-Image-2.1 | SenseNova-U1.5 | FLUX.2-klein-KV |
+|---|---|---|---|---|
+| `ui-mobile-home-zh`（中文健康 App 首页） | 1024² | 63.0% · 5/12 | **80.9% · 12/12** | 38.0% · 2/12 |
+| | 原生 | **86.4% · 11/12** | 82.6% · 12/12 | 33.0% · 2/12 |
+| `ui-login-en`（英文登录页） | 1024² | 85.3% · 6/6 | **96.8% · 6/6** | 77.9% · 5/6 |
+| | 原生 | 96.0% · 5/6 | **99.2% · 6/6** | 83.0% · 6/6 |
+| `ui-dashboard-dark`（深色数据看板） | 1024² | 29.8% · 13/14 | 13.3% · 13/14 | 17.1% · 12/14 |
+| | 原生 | 34.1% · 13/14 | 24.4% · 13/14 | 22.2% · 11/14 |
+| `ui-appstore-three`（三屏商店图） | 1024² | **33.3% · 4/4** | 22.4% · 4/4 | 22.4% · 3/4 |
+| | 原生 | 23.8% · 4/4 | 18.2% · 3/4 | 14.4% · 3/4 |
+| `product-skincare-white`（白底瓶身标签） | 1024² | **100% · 3/3** | 66.7% · 3/3 | 72.1% · 3/3 |
+| | 原生 | 66.7% · 3/3 | 66.7% · 3/3 | **100% · 3/3** |
+| **平均** | 1024² | 62.3% · 79.5% | 56.0% · **97.4%** | 45.5% · 64.1% |
+| | 原生 | 61.4% · 92.3% | 58.2% · **94.9%** | 50.5% · 64.1% |
+
+口径与公开榜单那轮完全一致（同一份 RapidOCR 打分脚本）。两点必须说明：
+
+- 深色看板那题**字符准确率三家都低（13–34%）**，因为模型会自己编出一屏表格数据；
+  命中率（11–13/14）才反映「要求写的那些东西有没有写对」。所以**看 UI 能力看命中率，别看字符准确率**。
+- 两档分辨率的文字密度不同，跨分辨率不要直接比字符准确率。
+
+### 耗时（18 题中位）
+
+| | Qwen-Image-2.1 | SenseNova-U1.5 | FLUX.2-klein-KV |
+|---|---|---|---|
+| 1024² 中位 | 53.2 s | 9.8 s | **1.5 s** |
+| 原生分辨率中位 | 113.1 s（2048²） | 13.2 s（2048²） | **3.8 s**（1536²） |
+
+### 六个领域各一张图（3 家 × 2 档分辨率）
+
+建筑·外景：
+
+![建筑外景](images/vertical/by-domain/architecture-exterior.jpg)
+
+建筑·室内：
+
+![建筑室内](images/vertical/by-domain/architecture-interior.jpg)
+
+人像：
+
+![人像](images/vertical/by-domain/portrait.jpg)
+
+App·UI：
+
+![App UI](images/vertical/by-domain/app-ui.jpg)
+
+商品·电商：
+
+![商品](images/vertical/by-domain/product.jpg)
+
+游戏·图标：
+
+![游戏图标](images/vertical/by-domain/game-icon.jpg)
+
+单图在 `images/vertical/<分辨率>/<模型>/<题号>.jpg`。
+
+### 选型矩阵
+
+| 场景 | 推荐 | 理由 |
+|---|---|---|
+| 建筑效果图（要氛围与材质） | **SenseNova** | 黄昏/夜景的光最准；但它会往玻璃幕墙上写幻觉招牌，出图后要过一眼 |
+| 室内效果图 | **SenseNova** | 空间关系与灯光层次最稳 |
+| 人像特写（要真实皮肤） | **SenseNova** | 高频细节差距明显，Qwen 偏平滑 |
+| 合影 / 全身 | 三家都行 | 比例正常、脸各不相同 |
+| App / 网页 UI 稿（含中文） | **SenseNova** | 1024² 就能用，且比 Qwen 快 5.4 倍 |
+| App / 网页 UI 稿（纯英文） | Qwen @2048²，或 SenseNova | Qwen 的英文标注最干净，但 1024² 下会缩成小块留重影 |
+| 商品白底图 | 三家都行 | 需求写清楚就够 |
+| 游戏单图标 | Qwen | 造型与光效最立体 |
+| 成套图标 / 严格一致的多元素 | **都不行** | 会退化成「一堆各画各的」，需要后处理或换专用模型 |
+
 ## 复现
 
 前置：两个 OpenAI 形状的图像接口（`POST /v1/images/generations`，字段 `prompt` / `width` / `height` /
@@ -143,10 +232,19 @@ python3 scripts/ocr_score.py                             # 文字题 OCR 客观�
 python3 scripts/eval_fair.py                             # 官方配方（2048²/40 步）复跑
 python3 scripts/rewrite_ablation.py                      # 只改题面的消融
 python3 scripts/pack_deliver.py                          # 出对比大图 + 整理成可直接发人的交付包
+
+python3 scripts/vertical_eval.py --size 1024 --models qwen,sense   # 垂直套件：统一 1024² 档
+python3 scripts/vertical_eval.py --size 2048 --models qwen,sense   # 垂直套件：各家推荐分辨率
+python3 scripts/ocr_vertical.py                                    # 垂直套件文字题打分
+python3 scripts/pack_vertical.py                                   # 出六个领域的并排联系表
 ```
 
 FLUX 那一臂要直接跑管线（`scripts/flux_eval.py`，需要 nunchaku 与 INT4 KV 权重，路径用
-`FLUX_KV_ROOT` / `FLUX_TE_PATH` 指），因为它部署的线上服务只开了编辑接口。
+`FLUX_KV_ROOT` / `FLUX_TE_PATH` 指），因为它部署的线上服务只开了编辑接口：
+
+```bash
+python3 scripts/flux_eval.py --prompts prompts-vertical.json --size 1536 --out out_vertical/1536/flux
+```
 
 ## 已知局限（请连同结论一起看）
 
@@ -155,17 +253,22 @@ FLUX 那一臂要直接跑管线（`scripts/flux_eval.py`，需要 nunchaku 与 
 - 消融臂的「长描述」是人工模仿官方增强器风格写的，**不是**官方增强器（微调 Qwen3.5-VL 9B）的真实输出。
 - 三家没跑在完全相同的步数上：各自用服务默认（Qwen 20 / SenseNova 8 / FLUX 4）。这是「各自最佳配置」的口径，
   不是「同预算」的口径；Qwen 的 40 步对照见 `results/results-fair.json`。
+- 垂直套件那 18 道题是**自建**的，不是公开榜单；它是「这个活该用谁」的选型参考，同样每题只出 1 张。
 
 ## 目录
 
 ```
-prompts.json                 题面原文（18 题，含公开来源与要求渲染的文字）
+prompts.json                 公开题面原文（18 题，含来源与要求渲染的文字）
+prompts-vertical.json        自建垂直题面（18 题 × 6 领域，每题带考点与判定项）
 results/                     逐次运行的 JSON 记录（含 OCR 打分）；timings.csv 是逐题耗时（从运行日志重建）
 results/logs/                原始运行日志（含失败与重试）
+results/results-vertical-*   垂直套件的耗时与 OCR 结果（口径同上面那一轮）
 images/compare/              三家同题并排大图（GenEval / DPG / LongText / 透明）
 images/round2/               2K 复测、官方配方复跑、题面消融
 images/1k-1024/<模型>/       首轮单图（文件名 = 题号）
 images/2k-retest/  official-recipe/  prompt-rewrite/
+images/vertical/<档位>/<模型>/  垂直套件单图（1024/2048/1536）
+images/vertical/by-domain/   六个领域各一张 3 家 × 2 档并排
 scripts/                     评测、打分、消融、打包脚本
 ```
 

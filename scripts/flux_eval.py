@@ -6,6 +6,7 @@
 
 用法（容器内，CUDA_VISIBLE_DEVICES 指向空闲卡）：
   python flux_eval.py --size 1024 --min-free-gib 16
+  python flux_eval.py --prompts prompts-vertical.json --size 1536 --out out_vertical/1536/flux
 """
 import os
 import argparse, json, pathlib, time
@@ -29,6 +30,7 @@ def main() -> int:
     ap.add_argument("--min-free-gib", type=float, default=16.0)
     ap.add_argument("--ids", default="", help="逗号分隔的题号，只跑这些")
     ap.add_argument("--out", default="out/flux", help="输出子目录（相对 仓库根）")
+    ap.add_argument("--prompts", default="prompts.json", help="题单文件（相对 仓库根）")
     args = ap.parse_args()
 
     free_gib = torch.cuda.mem_get_info()[0] / 2**30
@@ -51,7 +53,7 @@ def main() -> int:
 
     out_dir = ROOT / args.out
     out_dir.mkdir(parents=True, exist_ok=True)
-    prompts = json.load(open(ROOT / "prompts.json", encoding="utf-8"))
+    prompts = json.load(open(ROOT / args.prompts, encoding="utf-8"))
     only = {s for s in args.ids.split(",") if s}
     results = []
     for i, p in enumerate(prompts, 1):
@@ -68,7 +70,8 @@ def main() -> int:
         except Exception as exc:  # noqa: BLE001
             ok, err, secs = False, f"{type(exc).__name__}: {exc}"[:200], round(time.perf_counter() - t, 2)
         print(f"[flux] {i}/{len(prompts)} {p['id']:26s} {'ok' if ok else 'FAIL'} {secs}s {err or ''}", flush=True)
-        results.append({"id": p["id"], "model": "flux", "source": p["source"], "tag": p["tag"],
+        results.append({"id": p["id"], "model": "flux", "source": p.get("source"),
+                        "tag": p.get("tag") or p.get("domain"),
                         "ok": ok, "wall_s": secs, "error": err, "path": str(path) if ok else None})
         json.dump(results, open(ROOT / "results-flux.json", "w"), ensure_ascii=False, indent=1)
     return 0
