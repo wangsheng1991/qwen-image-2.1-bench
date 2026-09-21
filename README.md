@@ -314,9 +314,10 @@ images/2k-retest/  official-recipe/  prompt-rewrite/
 images/vertical/<档位>/<模型>/  垂直套件单图（1024/2048/1536）
 images/vertical/by-domain/   九个领域各一张 3 家 × 2 档并排
 scripts/                     评测、打分、消融、打包脚本
-scripts/make_deck.py         把 slides/slides.md 出成可编辑 PPTX（不依赖 npm / LibreOffice）
-slides/slides.md             中文演示稿源文件（12 页，Slidev，可出网页/PDF/PPTX）
-slides/dist/                 已生成的可编辑 PPT（12 页）
+scripts/make_deck.py         离线兜底：把 slides/slides.md 出成可编辑 PPTX（不装 npm 也能用）
+slides/slides.md             中文演示稿源文件（12 页，Slidev，可出网页/PDF/PPTX/PNG）
+slides/README.md             Slidev 出稿步骤与两个坑（图片软链、中文字体）
+slides/dist/                 已出好的成品：图片版 PPT、可编辑 PPT、逐页 PNG
 blog/                        实测笔记（docsify，零构建；线上在 /blog/ 路径）
 ```
 
@@ -326,10 +327,13 @@ blog/                        实测笔记（docsify，零构建；线上在 /blo
 |---|---|
 | 网页版报告 | <https://wangsheng1991.github.io/qwen-image-2.1-bench/> |
 | 实测笔记（博客） | <https://wangsheng1991.github.io/qwen-image-2.1-bench/blog/> |
-| 演示稿（可编辑 PPT，12 页） | [`slides/dist/qwen-image-2.1-deck.pptx`](slides/dist/qwen-image-2.1-deck.pptx) |
+| 演示稿 · 图片版 PPT（12 页） | [`slides/dist/qwen-image-2.1-deck.pptx`](slides/dist/qwen-image-2.1-deck.pptx) |
+| 演示稿 · 可编辑 PPT | [`slides/dist/qwen-image-2.1-deck-editable.pptx`](slides/dist/qwen-image-2.1-deck-editable.pptx) |
+| 演示稿 · 逐页 PNG（1960×1104） | [`slides/dist/png/`](slides/dist/png) |
 | 社交分享卡（1280×640） | [`images/social-preview-dark.png`](images/social-preview-dark.png) ｜ [浅色版](images/social-preview-light.png) |
 
-演示稿改内容只需改 `slides/slides.md`，再跑一次 `python scripts/make_deck.py`。
+演示稿源文件是 `slides/slides.md`，用 Slidev 出稿（出稿步骤与两个坑见 [`slides/README.md`](slides/README.md)）；
+`scripts/make_deck.py` 是不装 npm 时的离线兜底。
 分享卡由 [socialify](https://socialify.git.ci) 依仓库描述生成（改描述后要加 `&v=N` 破缓存）。
 
 ## License

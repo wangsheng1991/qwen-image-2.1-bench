@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""把 slides/slides.md 转成**可编辑**的 .pptx。
+"""把 slides/slides.md 转成**可编辑**的 .pptx（离线兜底路线）。
 
-Slidev 负责渲染成网页/PDF，本脚本负责出一份能直接改字的 PPT：
-同一份 slides.md 是唯一源，两套导出不改内容。
+正式出稿用 Slidev（见 slides/README.md：PDF / 图片版 PPTX / 可编辑 PPTX / 逐页 PNG，样式最准）；
+本脚本是不依赖 npm 与浏览器的兜底：同一份 slides.md，纯 python-pptx 排版。
 
 用法：
     python scripts/make_deck.py                       # 默认读写 slides/
@@ -312,7 +312,8 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("-i", "--input", default=str(here / "slides" / "slides.md"))
-    ap.add_argument("-o", "--output", default=str(here / "slides" / "dist" / "qwen-image-2.1-deck.pptx"))
+    ap.add_argument("-o", "--output",
+                    default=str(here / "slides" / "dist" / "qwen-image-2.1-deck-text.pptx"))
     ap.add_argument("--font", default="PingFang SC", help="中文正文字体（默认 macOS 自带 PingFang SC）")
     args = ap.parse_args()
 

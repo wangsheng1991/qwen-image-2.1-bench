@@ -60,17 +60,25 @@ layout: center
 <div class="pt-4 opacity-70 text-sm">中文长文本两家打平；组合题与长描述是 Qwen 的短板，但要看下一张怎么解释。</div>
 
 ---
+layout: two-cols-header
+---
 
 # 差距从哪来：口径，不是模型
 
-同一台机器、同一张卡、2048²、20 步、seed 42，**只把 GenEval 原题面改写成官方增强器风格的长描述**：
+同一台机器、同一张卡、2048²、20 步、seed 42，只把 GenEval 原题面改写成官方增强器风格的长描述：
 
-![只改题面](../images/round2/prompt-rewrite.jpg)
+::left::
 
-- `a photo of two clocks`：原题面照旧只画一个钟 → 长描述**正好两个**
-- `purple wine glass + black apple`：原题面丢苹果 → 长描述**两个都在、颜色绑定也对**
+<img src="../images/round2/prompt-rewrite.jpg" style="max-height:50vh;display:block;margin:0 auto" />
 
-<div class="pt-2 text-sm opacity-70">这类失败是「短请求不吃」，不是「不会画」。但 2K/40 步没带来文字提升，代价却是 172 s/张。</div>
+::right::
+
+- `a photo of two clocks`：原题面照旧**只画一个钟** → 长描述**正好两个**
+- `purple wine glass + black apple`：原题面**丢苹果** → 长描述**两个都在、颜色绑定也对**
+
+<div class="text-sm opacity-70 pt-6">
+这类失败是「短请求不吃」，不是「不会画」。但 2K/40 步没带来文字提升，代价却是 172 s/张。
+</div>
 
 ---
 
@@ -89,20 +97,44 @@ layout: center
 | 插画·绘本 | SenseNova | 水墨 Qwen 太淡，绘本两家都行 |
 
 ---
+layout: two-cols
+---
 
 # 房子与人
 
-![建筑外景](../images/vertical/by-domain/architecture-exterior.jpg)
+<img src="../images/vertical/by-domain/architecture-exterior.jpg" style="max-height:64vh;display:block;margin:0 auto" />
 
-![人像](../images/vertical/by-domain/portrait.jpg)
+<div class="text-xs opacity-60 text-center pt-3">
+建筑·外景：三家 × 两档分辨率（左三为 1024 档，右三为 2048/1536 档）
+</div>
 
+::right::
+
+<img src="../images/vertical/by-domain/portrait.jpg" style="max-height:64vh;display:block;margin:0 auto" />
+
+<div class="text-xs opacity-60 text-center pt-3">
+人像：老人特写的皮肤细节差距最大
+</div>
+
+---
+layout: two-cols
 ---
 
 # App·UI 与动漫
 
-![App UI](../images/vertical/by-domain/app-ui.jpg)
+<img src="../images/vertical/by-domain/app-ui.jpg" style="max-height:64vh;display:block;margin:0 auto" />
 
-![动漫](../images/vertical/by-domain/anime.jpg)
+<div class="text-xs opacity-60 text-center pt-3">
+App·UI：只有 SenseNova 在 1024² 就把中文界面写对
+</div>
+
+::right::
+
+<img src="../images/vertical/by-domain/anime.jpg" style="max-height:64vh;display:block;margin:0 auto" />
+
+<div class="text-xs opacity-60 text-center pt-3">
+动漫·二次元：中文海报 Qwen / SenseNova 都对，FLUX 乱码
+</div>
 
 ---
 
@@ -147,11 +179,16 @@ class: text-center
 
 # 全部数据与复现
 
-<div class="text-lg leading-relaxed pt-4">
+<div class="text-lg leading-loose pt-6">
 
-报告与 231 张出图：<https://github.com/wangsheng1991/qwen-image-2.1-bench><br/>
-网页版：<https://wangsheng1991.github.io/qwen-image-2.1-bench/><br/>
+报告与 231 张出图：https://github.com/wangsheng1991/qwen-image-2.1-bench
 
-<span class="text-base opacity-70">题面 `prompts*.json` ｜ 逐题耗时 `results/*.csv` ｜ OCR `results/*ocr*.json` ｜ 脚本 `scripts/`</span>
+网页版：https://wangsheng1991.github.io/qwen-image-2.1-bench/
+
+</div>
+
+<div class="text-base opacity-70 pt-4">
+
+题面 `prompts*.json` ｜ 逐题耗时 `results/*.csv` ｜ OCR `results/*ocr*.json` ｜ 脚本 `scripts/`
 
 </div>
